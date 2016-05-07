@@ -1,4 +1,4 @@
-'''Tests page for the users django template module.'''
+'''Tests page for the users Caprende module.'''
 
 from django.test import TestCase
 from django.utils import timezone

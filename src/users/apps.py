@@ -1,4 +1,4 @@
-'''Apps page for the users django template module.'''
+'''Apps page for the users Caprende module.'''
 
 from __future__ import unicode_literals
 

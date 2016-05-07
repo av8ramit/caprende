@@ -1,4 +1,4 @@
-'''Tests page for the users django template module.'''
+'''Tests page for the users Caprende module.'''
 # pylint: disable=no-self-use, no-member
 
 from __future__ import absolute_import

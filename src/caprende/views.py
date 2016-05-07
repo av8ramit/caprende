@@ -1,4 +1,4 @@
-'''Views page for the default django template module.'''
+'''Views page for the default Caprende module.'''
 
 from django.shortcuts import render
 

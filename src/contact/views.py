@@ -1,4 +1,4 @@
-'''Views page for the contact django template module.'''
+'''Views page for the contact Caprende module.'''
 
 from django.contrib import messages
 from django.shortcuts import redirect, render

@@ -1,4 +1,4 @@
-'''Admin page for the users django template module.'''
+'''Admin page for the users Caprende module.'''
 
 from django.contrib import admin
 from django.contrib.auth.models import Group
@@ -8,7 +8,7 @@ from .models import MyUser
 from .forms import UserChangeForm, UserCreationForm
 
 class MyUserAdmin(UserAdmin):
-    '''Apps page for the users django template module.'''
+    '''Apps page for the users Caprende module.'''
 
     # The forms to add and change user instances
     form = UserChangeForm
