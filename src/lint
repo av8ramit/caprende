@@ -1,1 +1,1 @@
-pylint --rcfile ../pylint.rc -r n -f colorized manage.py caprende 
+pylint --rcfile ../pylint.rc -r n -f colorized manage.py caprende contact users

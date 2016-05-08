@@ -1,9 +1,11 @@
 '''Forms page for the users Caprende module.'''
+# pylint: disable=no-self-use
 
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import MyUser
+from .models import MyUser, UserProfile
+
 
 
 class UserCreationForm(forms.ModelForm):
@@ -14,7 +16,7 @@ class UserCreationForm(forms.ModelForm):
     class Meta:
         '''Meta class invocation for MyUser.'''
         model = MyUser
-        fields = ('email', 'username', 'first_name', 'last_name')
+        fields = ('email', 'username')
 
     def clean_password2(self):
         '''Check that the two password entries match.'''
@@ -26,8 +28,6 @@ class UserCreationForm(forms.ModelForm):
 
     def signup(self, request, user):
         '''Signup method called by allauth.'''
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last_name']
         user.save()
 
 
@@ -39,7 +39,7 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         '''Meta class invocation for MyUser.'''
         model = MyUser
-        fields = ('email', 'password', 'username', 'first_name', 'last_name', 'is_active', 'is_admin', "is_member")
+        fields = ('email', 'password', 'username', 'is_active', 'is_admin', "is_member")
 
     def clean_password(self):
         '''Regardless of what the user provides, return the initial value. This is done here, rather
@@ -48,9 +48,11 @@ class UserChangeForm(forms.ModelForm):
 
 
 class EditProfileForm(forms.ModelForm):
-    '''A form for updating the profile image for a user.'''
+    '''A form for updating the user profile for a user.'''
 
     class Meta:
-        '''Meta class invocation for MyUser.'''
-        model = MyUser
-        fields = ('first_name', 'last_name', 'image',)
+        '''Meta class invocation for UserProfile.'''
+        model = UserProfile
+        fields = ('first_name', 'last_name', 'profile_image', 'course', 'motivational_image', 'university', 'major')
+
+

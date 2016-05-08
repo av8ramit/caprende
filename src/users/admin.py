@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 
-from .models import MyUser
+from .models import MyUser, UserProfile
 from .forms import UserChangeForm, UserCreationForm
 
 class MyUserAdmin(UserAdmin):
@@ -21,9 +21,7 @@ class MyUserAdmin(UserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name')}),
         ('Permissions', {'fields': ('is_admin', 'is_member')}),
-        ('Personal', {'fields': ('image',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
@@ -33,11 +31,12 @@ class MyUserAdmin(UserAdmin):
             'fields': ('email', 'password1', 'password2')}
         ),
     )
-    search_fields = ('email', 'username', 'first_name', 'last_name',)
+    search_fields = ('email', 'username')
     ordering = ('email',)
     filter_horizontal = ()
 
-# Now register the new UserAdmin.
+# Now register the new UserAdmin, MyUser, and UserProfile.
 admin.site.register(MyUser, MyUserAdmin)
+admin.site.register(UserProfile)
 # Now unregister the Group model from admin.
 admin.site.unregister(Group)
