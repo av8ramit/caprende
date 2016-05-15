@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="col-sm-7 col-sm-offset-3 main">
+{% else %}
+<div class="col-sm-8 col-sm-offset-2 main">
+{% endif %}
+    <div class="jumbotron">
+        <h1>{{ course.name }}</h1>
+        <p>{{ course.description }}</p>
+    </div>
+</div>
+
+{% endblock %}

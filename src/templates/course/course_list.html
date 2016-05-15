@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="col-sm-7 col-sm-offset-3 main">
+{% else %}
+<div class="col-sm-8 col-sm-offset-2 main">
+{% endif %}
+	{% for course in queryset %}
+	    <div class="jumbotron">
+	        <a href='{{ course.get_absolute_url }}'><h1>{{ course.name }}</h1></a>
+	        <p>{{ course.description }}</p>
+	    </div>
+	{% endfor %}
+</div>
+
+{% endblock %}

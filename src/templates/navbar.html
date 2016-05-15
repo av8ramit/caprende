@@ -22,6 +22,7 @@
                         </ul>
                     </li>
                 {% else %}
+                    <li><a href="{% url 'course_list' %}">Courses</a></li>
                     <li><a href="{% url 'account_login' %}">Login</a></li>
                 {% endif %}
                 <li><a href="{% url 'contact_us' %}">Contact</a></li>
