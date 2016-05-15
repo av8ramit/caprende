@@ -21,6 +21,7 @@ from django.contrib import admin
 from allauth.account.views import confirm_email
 
 from contact import views as contact_views
+from course import views as course_views
 from users import views as users_views
 
 from .views import home
@@ -44,6 +45,12 @@ urlpatterns += [
 #contact model URLS
 urlpatterns += [
     url(r'^contact_us/$', contact_views.contact_us, name='contact_us'),
+]
+
+#course model URLS
+urlpatterns += [
+    url(r'^courses/$', course_views.course_list, name='course_list'),
+    url(r'^course/(?P<slug>\w+)/$', course_views.course_detail, name='course_detail'),
 ]
 
 #static file imports
