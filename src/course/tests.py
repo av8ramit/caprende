@@ -8,7 +8,7 @@ from .models import Course, CourseSection
 # Create your tests here.
 
 class CourseTests(TestCase):
-    '''Tests related to the actual Account functionality.'''
+    '''Tests related to the actual Course functionality.'''
 
     def test_course_creation(self):
         '''Tests creating a course.'''
@@ -19,6 +19,11 @@ class CourseTests(TestCase):
         course.save()
         assert course.name == "testing course"
         assert course.slug == "testing-course"
+
+        #Test get_absolute_url
+        resp = self.client.get(course.get_absolute_url())
+        self.assertEqual(resp.status_code, 200)
+
         course2 = Course(
             name="testing course",
             slug="testing-course"
