@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     #Project applications
     'users',
+    'categories',
     'contact',
     'course',
 ]
