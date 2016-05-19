@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'categories',
     'contact',
     'course',
+    'questions',
 ]
 
 SITE_ID = 1
