@@ -126,7 +126,8 @@ class SubCategory(models.Model):
         '''Return the URL to the subcategory.'''
         return reverse("subcategory_detail", kwargs={"slug": self.slug})
 
-
+    def __unicode__(self):
+        return self.course.name + " | " + self.section.name + " | " + self.category.name + " | " + self.name
 
 
 
