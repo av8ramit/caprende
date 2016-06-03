@@ -1,13 +1,7 @@
 '''Forms page for the questions Caprende module.'''
 
-#from django import forms
+from django import forms
 
-#from .models import Question
-
-# class QuestionResponseForm(forms.ModelForm):
-# 	'''A form for answering practice questions.'''
-
-# 	class Meta:
-# 		'''Meta class invocation for Question.'''
-# 		model = Question
-# 		fields = ()
+class QuestionResponseForm(forms.Form):
+    '''A form for answering practice questions.'''
+    answer = forms.CharField(max_length=1)

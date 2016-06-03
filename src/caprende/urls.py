@@ -23,6 +23,7 @@ from allauth.account.views import confirm_email
 from categories import views as categories_views
 from contact import views as contact_views
 from course import views as course_views
+from questions import views as question_views
 from users import views as users_views
 
 from .views import home
@@ -58,6 +59,13 @@ urlpatterns += [
 urlpatterns += [
     url(r'^courses/$', course_views.course_list, name='course_list'),
     url(r'^course/(?P<slug>[\w-]+)/$', course_views.course_detail, name='course_detail'),
+]
+
+#question model URLS
+urlpatterns += [
+    url(r'^question/(?P<course>[\w-]+)/(?P<question_id>\d+)/(?P<response>\w)/$', question_views.question_review, name='question_review'),
+    url(r'^question/(?P<course>[\w-]+)/(?P<question_id>\d+)/$', question_views.question_detail, name='question_detail'),
+
 ]
 
 #static file imports

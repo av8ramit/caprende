@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Question | {% endblock %}
+
+{% block content %}
+
+<div class="col-sm-9 col-sm-offset-2 main">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-9">
+                <h1>{{ question.category_string }}</h1>
+            </div>
+            <div class="col-sm-3">
+                <nav>
+                  <ul class="pager">
+                    <li class="next"><a href="{{ question.get_next_url }}">Next <span aria-hidden="true">&rarr;</span></a></li>
+                  </ul>
+                </nav>
+            </div>
+        </div>
+        <p>{{ question.passage }}</p>
+        <hr>
+        <p>{{ question.question_text|safe }}</p>
+        {% for item, value, correct in question.choices %}
+            {% if correct and value == response %}
+                <font color="green"><input type="radio" checked="checked" name="answer" value="{{ value }}"> {{ item }}<br></font>
+            {% elif correct %}
+                <font color="green"><input type="radio" name="answer" value="{{ value }}"> {{ item }}<br></font>
+            {% elif value == response %}
+                <font color="red"><input type="radio" checked="checked" name="answer" value="{{ value }}"> {{ item }}<br></font>
+            {% else %}
+                <font color="black"><input type="radio" name="answer" value="{{ value }}"> {{ item }}<br></font>
+            {% endif %}
+        {% endfor %}
+        <br>
+    </div>
+</div>
+
+{% endblock content %}
