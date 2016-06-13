@@ -21,6 +21,7 @@ from django.contrib import admin
 from allauth.account.views import confirm_email
 
 from categories import views as categories_views
+from comments import views as comment_views
 from contact import views as contact_views
 from course import views as course_views
 from questions import views as question_views
@@ -50,10 +51,17 @@ urlpatterns += [
     url(r'^subcategory/(?P<slug>[\w-]+)/$', categories_views.subcategory_detail, name='subcategory_detail'),
 ]
 
+#comments model URLS
+urlpatterns += [
+    url(r'^comment/(?P<comment_id>\d+)/$', comment_views.comment_thread, name='comment_thread'),
+    url(r'^comment/create/$', comment_views.comment_create_view, name='comment_create'),
+]
+
 #contact model URLS
 urlpatterns += [
     url(r'^contact_us/$', contact_views.contact_us, name='contact_us'),
 ]
+
 
 #course model URLS
 urlpatterns += [
