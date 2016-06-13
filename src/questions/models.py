@@ -50,7 +50,7 @@ class QuestionManager(models.Manager):
 
     def get_index(self, test, index):
         '''Return the question with the corresponding index and test.'''
-        return self.get_queryset().get(index=index)
+        return self.get_queryset().get(index=index, test=test)
 
     def all(self):
         '''Return all the questions.'''

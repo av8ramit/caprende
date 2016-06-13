@@ -1,4 +1,4 @@
-'''Forms page for the users Caprende module.'''
+'''Forms page for the contact Caprende module.'''
 
 from django import forms
 

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 
+from comments.forms import CommentForm
 
 from .forms import QuestionResponseForm
 from .models import Question, QuestionResponse
@@ -56,9 +57,15 @@ def question_detail(request, course, question_id):
 def question_review(request, course, question_id, response):
     '''Return to the view of the question.'''
     question = get_object_or_404(Question, id=question_id)
+    comments = question.comment_set.all()
+    comment_form = CommentForm()
+    for c in comments:
+        c.get_children()
     context = {
         "question" : question,
         "response" : response,
+        "comments" : comments,
+        "comment_form": comment_form
     }
     return render(request, "questions/question_review.html", context)
 
