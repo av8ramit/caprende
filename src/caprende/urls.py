@@ -20,6 +20,7 @@ from django.contrib import admin
 
 from allauth.account.views import confirm_email
 
+from analytics import views as analytics_views
 from categories import views as categories_views
 from comments import views as comment_views
 from contact import views as contact_views
@@ -62,7 +63,6 @@ urlpatterns += [
     url(r'^contact_us/$', contact_views.contact_us, name='contact_us'),
 ]
 
-
 #course model URLS
 urlpatterns += [
     url(r'^courses/$', course_views.course_list, name='course_list'),
@@ -74,6 +74,11 @@ urlpatterns += [
     url(r'^question/(?P<course>[\w-]+)/(?P<question_id>\d+)/(?P<response>\w)/$', question_views.question_review, name='question_review'),
     url(r'^question/(?P<course>[\w-]+)/(?P<question_id>\d+)/$', question_views.question_detail, name='question_detail'),
 
+]
+
+#analytics model URLS
+urlpatterns += [
+    url(r'^dashboard/$', analytics_views.dashboard, name='dashboard'),
 ]
 
 #static file imports

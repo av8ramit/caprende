@@ -87,5 +87,5 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         '''Returns the URL of the comment thread.'''
-        return reverse("comment_thread", kwargs={"id": self.id})
+        return reverse("comment_thread", kwargs={"comment_id": self.id})
 
