@@ -54,12 +54,13 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     #Project applications
-    'users',
+    'analytics',
     'categories',
     'comments',
     'contact',
     'course',
     'questions',
+    'users',
 ]
 
 SITE_ID = 1
