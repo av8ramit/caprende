@@ -5,6 +5,8 @@ from __future__ import unicode_literals
 
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models.signals import post_save
+from django.utils.text import slugify
 
 from course.models import CourseSection
 
@@ -66,6 +68,15 @@ class Category(models.Model):
     def get_absolute_url(self):
         '''Return the URL to the category.'''
         return reverse("category_detail", kwargs={"slug": self.slug})
+
+def set_category_slug_receiver(sender, instance, created, *args, **kwargs):
+    '''Receiver function for assigning a slug to a category.'''
+
+    if created:
+        instance.slug = slugify(instance.name + " " + instance.section.course.name)
+        instance.save()
+
+post_save.connect(set_category_slug_receiver, sender=Category)
 
 class SubCategoryQuerySet(models.query.QuerySet):
     '''SubCategory Query Set'''
@@ -129,5 +140,13 @@ class SubCategory(models.Model):
     def __unicode__(self):
         return self.course.name + " | " + self.section.name + " | " + self.category.name + " | " + self.name
 
+def set_subcategory_slug_receiver(sender, instance, created, *args, **kwargs):
+    '''Receiver function for assigning a slug to a subcategory.'''
+
+    if created:
+        instance.slug = slugify(instance.name + " " + instance.category.name + " " + instance.category.section.course.name)
+        instance.save()
+
+post_save.connect(set_subcategory_slug_receiver, sender=SubCategory)
 
 

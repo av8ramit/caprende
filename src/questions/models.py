@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models.signals import pre_save
 
 from categories.models import Category, SubCategory
 from course.models import Course, CourseSection
@@ -48,9 +49,17 @@ class QuestionManager(models.Manager):
         '''Sort for questions by subcategory.'''
         return self.get_queryset().sort_by_subcategory(subcategory=subcategory)
 
-    def get_index(self, test, index):
-        '''Return the question with the corresponding index and test.'''
-        return self.get_queryset().get(index=index, test=test)
+    def get_index(self, course, index):
+        '''Return the question with the corresponding index and course.'''
+        return self.get_queryset().get(index=index, course=course)
+
+    def get_latest(self, course):
+        '''Return the latest question by course.'''
+        qs = self.get_queryset().filter(course=course)
+        if len(qs) >= 1:
+            return qs[0]
+        else:
+            return None
 
     def all(self):
         '''Return all the questions.'''
@@ -112,6 +121,7 @@ class Question(models.Model):
     class Meta:
         '''Meta class invocation for Question class.'''
         unique_together = ('index', 'course')
+        ordering = ['course', '-index']
 
     def __unicode__(self):
         return self.question_text
@@ -147,6 +157,21 @@ class Question(models.Model):
             choices.append((self.option_E, "E", self.answer_letter == 'E'))
         return choices
 
+def set_question_index_receiver(sender, instance, *args, **kwargs):
+    '''Receiver function for assigning a question the next index.'''
+
+    #New question created
+    if instance.index is None:
+        latest_question = Question.objects.get_latest(instance.course)
+
+        #If a question for this course has been created
+        if latest_question is not None:
+            instance.index = latest_question.index + 1
+        #First question in this course
+        else:
+            instance.index = 1
+
+pre_save.connect(set_question_index_receiver, sender=Question)
 
 class QuestionResponseQueryset(models.query.QuerySet):
     '''QuerySet for the Question class.'''

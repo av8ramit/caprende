@@ -5,6 +5,8 @@ from __future__ import unicode_literals
 
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models.signals import post_save
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -65,6 +67,15 @@ class Course(models.Model):
     def get_absolute_url(self):
         '''Return the URL for the course_detail for the particular course.'''
         return reverse("course_detail", kwargs={"slug": self.slug})
+
+def set_course_slug_receiver(sender, instance, created, *args, **kwargs):
+    '''Receiver function for assigning a question the next index.'''
+
+    if created:
+        instance.slug = slugify(instance.name)
+        instance.save()
+
+post_save.connect(set_course_slug_receiver, sender=Course)
 
 class CourseSection(models.Model):
     '''Base model for a Course Section Type.'''
