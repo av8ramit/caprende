@@ -73,7 +73,7 @@ urlpatterns += [
 urlpatterns += [
     url(r'^question/(?P<course>[\w-]+)/(?P<question_id>\d+)/(?P<response>\w)/$', question_views.question_review, name='question_review'),
     url(r'^question/(?P<course>[\w-]+)/(?P<question_id>\d+)/$', question_views.question_detail, name='question_detail'),
-
+    url(r'^next_question/$', question_views.user_question_detail, name='next_question'),
 ]
 
 #analytics model URLS

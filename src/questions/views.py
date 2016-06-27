@@ -14,6 +14,15 @@ from .models import Question, QuestionResponse
 # Create your views here.
 
 @login_required
+def user_question_detail(request):
+    '''Return the view of the next question the user has to answer.'''
+
+    return HttpResponseRedirect(reverse('question_detail', kwargs={
+        'course' : request.user.profile.course,
+        'question_id' : request.user.profile.next_question_index,
+    }))
+
+@login_required
 def question_detail(request, course, question_id):
     '''Return to the view of the question.'''
 
@@ -39,6 +48,9 @@ def question_detail(request, course, question_id):
                 attempt=answer,
             )
             response.save()
+
+            #Increase the question index for the user.
+            request.user.profile.increase_question_index()
 
             #Create or retrieve the data set for the user
             cat_data_set = CategoryDataSet.objects.get_or_create(

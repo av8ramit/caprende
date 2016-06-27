@@ -6,8 +6,8 @@ def upload_location(instance, filename):
 
 def next_question(question):
     '''Return the next question object with the higher index.'''
-    course = question.course
+
     try:
-        return course.question_set.all().get(course=question.course, index=question.index + 1)
+        return question.course.question_set.all().get(course=question.course, index=question.index + 1)
     except question.DoesNotExist:
         return None

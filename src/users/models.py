@@ -144,6 +144,9 @@ class UserProfile(models.Model):
     completed = models.BooleanField(
         default=True
     )
+    next_question_index = models.PositiveIntegerField(
+        default=1
+    )
 
     def update(self,
                first_name=None,
@@ -183,6 +186,11 @@ class UserProfile(models.Model):
             return self.first_name
         else:
             return self.username
+
+    def increase_question_index(self):
+        '''Increase the question index by 1.'''
+        self.next_question_index += 1
+        self.save()
 
     def __unicode__(self):
         return self.user.username
