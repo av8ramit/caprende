@@ -12,8 +12,8 @@
             <small>{{ user.profile.major }}</small>
         </div>
         <hr>
-        <li><a href="{% url 'dashboard' %}">Dashboard<span class="sr-only">(current)</span></a></li>
-        <li class="active"><a href="{% url 'next_question' %}">Practice Page</a></li>
+        <li {% if dashboard %} class="active" {% endif %}><a href="{% url 'dashboard' %}">Dashboard<span class="sr-only">(current)</span></a></li>
+        <li {% if practice %} class="active" {% endif %}><a href="{% url 'next_question' %}">Practice Page</a></li>
         <li><a href="#">Peer Analytics</a></li>
         <li><a href="#">In Depth</a></li>
     </ul>

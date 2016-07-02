@@ -11,9 +11,11 @@
         <p>{{ question.passage }}</p>
         <hr>
         <form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
+            {% if question.figure %}
+            {% endif %}
             <p>{{ question.question_text|safe }}</p>
             {% for item, value, correct in question.choices %}
-            <input type="radio" name="answer" value="{{ value }}"> {{ item }}<br>
+            <input type="radio" name="answer" value="{{ value }}"> {{ item|safe }}<br>
             {% endfor %}
             <br>
             <input type='submit' class='btn btn-success btn-block' value='Submit' />

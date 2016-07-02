@@ -11,5 +11,6 @@ def dashboard(request):
     print category_datasets
     context = {
         "category_datasets" : category_datasets,
+        "dashboard" : True,
     }
     return render(request, "analytics/dashboard.html", context)

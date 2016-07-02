@@ -18,9 +18,9 @@ from .utils import next_question, upload_location
 class QuestionQueryset(models.query.QuerySet):
     '''QuerySet for the Question class.'''
 
-    def sort_by_test(self, test):
-        '''Sort for questions by test.'''
-        return self.filter(test=test)
+    def sort_by_course(self, course):
+        '''Sort for questions by course.'''
+        return self.filter(course=course)
 
     def sort_by_category(self, category):
         '''Sort for questions by category.'''
@@ -51,7 +51,7 @@ class QuestionManager(models.Manager):
 
     def get_index(self, course, index):
         '''Return the question with the corresponding index and course.'''
-        return self.get_queryset().get(index=index, course=course)
+        return self.get_queryset().filter(course=course).get(index=index)
 
     def get_latest(self, course):
         '''Return the latest question by course.'''
@@ -128,7 +128,7 @@ class Question(models.Model):
 
     def get_absolute_url(self):
         '''Return the URL to the question.'''
-        return reverse("question_detail", kwargs={"course" : unicode(self.course), "question_id" : self.id})
+        return reverse("question_detail", kwargs={"course_slug" : self.course.slug, "question_index" : self.index})
 
     def get_next_url(self):
         '''Return the URL to the next question.'''
