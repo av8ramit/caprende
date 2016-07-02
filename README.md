@@ -54,4 +54,17 @@ Commit Protocol
 > - Add a test infrastructure for your module. Run "python manage.py test" and make sure all tests pass.
 > - Create a branch in github using the following nomenclature /user/github_username/feature/feature_name and create a pull-request prior to merging.
 
+Developer Environment Installation
+-------------------
+
+> - Register your github account SSH Key under Authorized Keys.
+> - Get access credentials to the caprende repository.
+> - Clone the repository using the following command. 
+	> "git clone git@github.com:av8ramit/caprende.git"
+> - A directory named caprende should have been created. Now create a virtual environment with the following command.
+	> "virtualenv caprende"
+> - Activate the virtual environment with the following command.
+	> "cd caprende; source bin/activate"
+> - Enter the src directory and run the following command to launch the mock website at http://127.0.0.1:8000/
+	> "python manage.py runserver"
 
