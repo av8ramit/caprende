@@ -12,6 +12,9 @@
         <hr>
         <form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
             {% if question.figure %}
+                <div class="questionfigure">
+                    <img text-align="center" class="img" src="{{ question.figure.url }}" class="img-responsive">
+                </div>
             {% endif %}
             <p>{{ question.question_text|safe }}</p>
             {% for item, value, correct in question.choices %}
