@@ -7,7 +7,18 @@
 
 <div class="col-sm-9 col-sm-offset-2 main">
     <div class="jumbotron">
-        <h1>{{ question.category_string }}</h1><br>
+        <div class="row">
+            <div class="col-sm-9">
+                <h1>{{ question.category_string }}</h1>
+            </div>
+            <div class="col-sm-3">
+                <nav>
+                  <ul class="pager">
+                    <li class="next"><a href="{{ question.get_next_url }}">Next <span aria-hidden="true">&rarr;</span></a></li>
+                  </ul>
+                </nav>
+            </div>
+        </div>
         <p>{{ question.passage }}</p>
         <hr>
         <form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
