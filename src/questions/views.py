@@ -104,4 +104,3 @@ def question_review(request, course_slug, question_index, response):
         "comment_form": comment_form
     }
     return render(request, "questions/question_review.html", context)
-

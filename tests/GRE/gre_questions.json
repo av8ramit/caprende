@@ -1,0 +1,34 @@
+{
+  "1" : {
+      "text" : "The passage implies which of the following about the current cost of generating electricity?",
+  		"course" : "GRE",
+  		"section" : "Verbal Comprehension",
+      "category" : "Reading Comprehension",
+      "subcategory" : "Inference",
+      "passage" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change. Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
+      "option_A" : "It is higher than it would be if better technologies for capturing carbon dioxide were available.",
+      "option_B" : "It is somewhat less than the cost of electricity transmission and distribution.",
+      "option_C" : "It constitutes at most half of the delivered price of electricity.",
+      "option_D" : "It is dwelt on by policymakers to the exclusion of other costs associated with electricity delivery.",
+      "option_E" : "It is not fully recovered by the prices charged directly to electricity consumers.",
+      "answer_letter" : "C",
+      "answer_explanation" : "Here is the explanation of question 1. Here is an additional explanation why the answer is correct."
+  },
+
+  "2" : {
+      "text" : "The passage suggests that extensive use of sequestration would, over time, have which of the following consequences?",
+      "course" : "GRE",
+      "section" : "Verbal Comprehension",
+      "category" : "Reading Comprehension",
+      "subcategory" : "Direct Comprehension",
+      "passage" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change. Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
+      "option_A" : "The burning of fossil fuels would eventually cease to produce atmospheric accumulations of carbon dioxide.",
+      "option_B" : "The proportion of the delivered price of electricity due to generation would rise and then decline.",
+      "option_C" : "Power plants would consume progressively lower quantities of fossil fuels.",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "B",
+      "answer_explanation" : "Here is the explanation of question 2. Here is an additional explanation why the answer is correct."
+  }
+
+}

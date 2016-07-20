@@ -8,6 +8,8 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.utils.text import slugify
 
+from .utils import upload_location
+
 # Create your models here.
 
 class CourseQuerySet(models.query.QuerySet):
@@ -47,6 +49,16 @@ class Course(models.Model):
         max_length=2000,
         default="",
         null=True
+    )
+    course_json_file = models.FileField(
+        upload_to=upload_location,
+        null=True,
+        blank=True,
+    )
+    question_json_file = models.FileField(
+        upload_to=upload_location,
+        null=True,
+        blank=True,
     )
     active = models.BooleanField(
         default=True,
