@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}{% endblock %}
 
@@ -12,6 +13,18 @@
     <div class="jumbotron">
         <h1>{{ course.name }}</h1>
         <p>{{ course.description }}</p>
+        {% if course_form %}
+			<form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
+				{{ course_form|crispy }}
+				<input type='submit' class='btn btn-success btn-block' value='Upload Course JSON' />
+			</form>
+		{% endif %}
+        {% if question_form %}
+			<form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
+				{{ question_form|crispy }}
+				<input type='submit' class='btn btn-success btn-block' value='Upload Question JSON' />
+			</form>
+		{% endif %}
     </div>
 </div>
 

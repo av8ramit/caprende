@@ -1,0 +1,50 @@
+{
+  "Quantitative Comprehension" : {
+  		"Numbers and Operations" : [
+  			"Integers",
+  			"Fractions, Decimals, Percents",
+  			"Sequences and Sets",
+  			"Counting Problems",
+  			"Prime Numbers"
+  		],
+  		"Algebra and Functions" : [
+  			"Solving Basic Algebra Equations",
+  			"Linear Graphs and Equations",
+  			"Solving Quadratic Equations",
+  			"Solving Absolute Value and Inequality Equations",
+  			"Exponents, Variation, and Roots",
+  			"Word Problems"
+  		],
+  		"Geometry and Measurement" : [
+  			"Special Angle Triangles",
+  			"Special Side Triangles",
+  			"Isosceles, Scalene, and Equilateral Triangles",
+  			"Congruent and Similar Triangles",
+  			"Arc Lengths and Areas for Sectors",
+  			"Perimeter, Area, and Volume",
+  			"Polygon Properties",
+  			"Midpoint and Distance Formula"
+  		],
+  		"Data Analysis, Statistics, and Probability" : [
+  			"Data Analysis",
+  			"Average, Median, Mode",
+  			"Probability"
+  		]
+  },
+  "Verbal Comprehension" : {
+  		"Sentence Completion" : [
+  			"Context Single Word Replacement",
+  			"Synonymous Double Word Replacement",
+  			"Inference Double Word Replacement"
+  		],
+  		"Reading Comprehension" : [
+  			"Main Idea",
+  			"Direct Comprehension",
+  			"Purpose/Rhetorical Strategy",
+  			"Inference",
+  			"Comparison",
+  			"Tone and Style",
+  			"Vocabulary in Context"
+  		]
+  }
+}
