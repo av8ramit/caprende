@@ -20,13 +20,13 @@
             </div>
         </div>
         <hr>
-        <p>{{ question.passage }}</p>
-        <hr>
         {% if question.figure %}
             <div class="questionfigure">
                 <img text-align="center" class="img" src="{{ question.figure.url }}" class="img-responsive">
             </div>
         {% endif %}
+        <p>{{ question.passage }}</p>
+        <hr>
         <p>{{ question.question_text|safe }}</p>
         {% for item, value, correct in question.choices %}
             {% if correct and value == response %}
