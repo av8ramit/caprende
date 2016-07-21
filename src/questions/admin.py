@@ -9,7 +9,7 @@ from .models import Question, QuestionResponse
 class QuestionAdmin(admin.ModelAdmin):
     '''Admin interface for Question.'''
 
-    list_display = ["__unicode__", 'course']
+    list_display = ["__unicode__", 'course', 'index']
     exclude = ['index']
 
     class Meta:

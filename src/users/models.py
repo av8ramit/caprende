@@ -7,7 +7,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.db.models.signals import post_save
 
-from caprende.utils import COURSE_LIST
+from course.models import Course
 
 from .utils import upload_location, UNIVERSITY_LIST, MAJOR_LIST
 
@@ -119,11 +119,7 @@ class UserProfile(models.Model):
         null=True,
         blank=True,
     )
-    course = models.CharField(
-        max_length=120,
-        choices=COURSE_LIST,
-        verbose_name='Course',
-    )
+    course = models.ForeignKey(Course, null=True)
     motivational_image = models.FileField(
         upload_to=upload_location,
         null=True,
