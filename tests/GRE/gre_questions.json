@@ -1,85 +1,5 @@
 {
   "1" : {
-      "text" : "The passage implies which of the following about the current cost of generating electricity?",
-  		"course" : "GRE",
-  		"section" : "Verbal Comprehension",
-      "category" : "Reading Comprehension",
-      "subcategory" : "Inference",
-      "passage" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change. Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
-      "option_A" : "It is higher than it would be if better technologies for capturing carbon dioxide were available.",
-      "option_B" : "It is somewhat less than the cost of electricity transmission and distribution.",
-      "option_C" : "It constitutes at most half of the delivered price of electricity.",
-      "option_D" : "It is dwelt on by policymakers to the exclusion of other costs associated with electricity delivery.",
-      "option_E" : "It is not fully recovered by the prices charged directly to electricity consumers.",
-      "answer_letter" : "C",
-      "answer_explanation" : "Here is the explanation of question 1. Here is an additional explanation why the answer is correct."
-  },
-
-  "2" : {
-      "text" : "The passage suggests that extensive use of sequestration would, over time, have which of the following consequences?",
-      "course" : "GRE",
-      "section" : "Verbal Comprehension",
-      "category" : "Reading Comprehension",
-      "subcategory" : "Direct Comprehension",
-      "passage" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change. Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
-      "option_A" : "The burning of fossil fuels would eventually cease to produce atmospheric accumulations of carbon dioxide.",
-      "option_B" : "The proportion of the delivered price of electricity due to generation would rise and then decline.",
-      "option_C" : "Power plants would consume progressively lower quantities of fossil fuels.",
-      "option_D" : "",
-      "option_E" : "",
-      "answer_letter" : "B",
-      "answer_explanation" : "Here is the explanation of question 2. Here is an additional explanation why the answer is correct."
-  },
-
-  "3" : {
-      "text" : "Select the sentence that explains why an outcome of sequestration that might have been expected would not occur.",
-      "course" : "GRE",
-      "section" : "Verbal Comprehension",
-      "category" : "Reading Comprehension",
-      "subcategory" : "Purpose/Rhetorical Strategy",
-      "passage" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change. Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
-      "option_A" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change.",
-      "option_B" : "Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. ",
-      "option_C" : "But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. ",
-      "option_D" : "Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
-      "option_E" : "",
-      "answer_letter" : "C",
-      "answer_explanation" : "Here is the explanation of question 3. Here is an additional explanation why the answer is correct."
-  },
-
-  "4" : {
-      "text" : "The passage addresses which of the following issues related to Glass's use of popular elements in his classical compositions?",
-      "course" : "GRE",
-      "section" : "Verbal Comprehension",
-      "category" : "Reading Comprehension",
-      "subcategory" : "Purpose/Rhetorical Strategy",
-      "passage" : "Reviving the practice of using elements of popular music in classical composition, an approach that had been in hibernation in the United States during the 1960s, composer Philip Glass (born 1937) embraced the ethos of popular music in his compositions. Glass based two symphonies on music by rock musicians David Bowie and Brian Eno, but the symphonies' sound is distinctively his. Popular elements do not appear out of place in Glass's classical music, which from its early days has shared certain harmonies and rhythms with rock music. Yet this use of popular elements has not made Glass a composer of popular music. His music is not a version of popular music packaged to attract classical listeners; it is high art for listeners steeped in rock rather than the classics.",
-      "option_A" : "How it is regarded by listeners who prefer rock to the classics",
-      "option_B" : "How it has affected the commercial success of Glass's music",
-      "option_C" : "Whether it has contributed to a revival of interest among other composers in using popular elements in their compositions",
-      "option_D" : "Whether it has had a detrimental effect on Glass's reputation as a composer of classical music",
-      "option_E" : "Whether it has caused certain of Glass's works to be derivative in quality",
-      "answer_letter" : "E",
-      "answer_explanation" : "Here is the explanation of question 4. Here is an additional explanation why the answer is correct."
-  },
-
-  "5" : {
-      "text" : "The passage suggests that Glass's work displays which of the following qualities?",
-      "course" : "GRE",
-      "section" : "Verbal Comprehension",
-      "category" : "Reading Comprehension",
-      "subcategory" : "Main Idea",
-      "passage" : "Reviving the practice of using elements of popular music in classical composition, an approach that had been in hibernation in the United States during the 1960s, composer Philip Glass (born 1937) embraced the ethos of popular music in his compositions. Glass based two symphonies on music by rock musicians David Bowie and Brian Eno, but the symphonies' sound is distinctively his. Popular elements do not appear out of place in Glass's classical music, which from its early days has shared certain harmonies and rhythms with rock music. Yet this use of popular elements has not made Glass a composer of popular music. His music is not a version of popular music packaged to attract classical listeners; it is high art for listeners steeped in rock rather than the classics.",
-      "option_A" : "A return to the use of popular music in classical compositions",
-      "option_B" : "An attempt to elevate rock music to an artistic status more closely approximating that of classical music",
-      "option_C" : "A long-standing tendency to ignore elements from two apparently disparate musical styles",
-      "option_D" : "",
-      "option_E" : "",
-      "answer_letter" : "A",
-      "answer_explanation" : "Here is the explanation of question 5. Here is an additional explanation why the answer is correct."
-  },
-
-  "6" : {
       "text" : "It is refreshing to read a book about our planet by an author who does not allow facts to be (1)__________ by politics: well aware of the political disputes about the effects of human activities on climate and biodiversity, this author does not permit them to (2)__________ his comprehensive description of what we know about our biosphere. He emphasizes the enormous gaps in our knowledge, the sparseness of our observations, and the (3)__________, calling attention to the many aspects of planetary evolution that must be better understood before we can accurately diagnose the condition of our planet.",
       "course" : "GRE",
       "section" : "Verbal Comprehension",
@@ -95,39 +15,103 @@
       "answer_explanation" : "Here is the explanation of question 6. Here is an additional explanation why the answer is correct."
   },
 
-  "7" : {
-      "text" : "From the outset, the concept of freedom of the seas from the proprietary claims of nations was challenged by a contrary notion — that of the _______ of the oceans for reasons of national security and profit.",
+  "2" : {
+      "text" : "The passage implies which of the following about the current cost of generating electricity?",
+  		"course" : "GRE",
+  		"section" : "Verbal Comprehension",
+      "category" : "Reading Comprehension",
+      "subcategory" : "Inference",
+      "passage" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change. Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
+      "option_A" : "It is higher than it would be if better technologies for capturing carbon dioxide were available.",
+      "option_B" : "It is somewhat less than the cost of electricity transmission and distribution.",
+      "option_C" : "It constitutes at most half of the delivered price of electricity.",
+      "option_D" : "It is dwelt on by policymakers to the exclusion of other costs associated with electricity delivery.",
+      "option_E" : "It is not fully recovered by the prices charged directly to electricity consumers.",
+      "answer_letter" : "C",
+      "answer_explanation" : "Here is the explanation of question 1. Here is an additional explanation why the answer is correct."
+  },
+
+  "3" : {
+      "text" : "The passage suggests that extensive use of sequestration would, over time, have which of the following consequences?",
       "course" : "GRE",
       "section" : "Verbal Comprehension",
-      "category" : "Sentence Completion",
-      "subcategory" : "Context Single Word Replacement",
-      "passage" : "For each blank select one entry from the corresponding column of choices. Fill all blanks in the way that best completes the text.",
-      "option_A" : "promotion",
-      "option_B" : "exploration",
-      "option_C" : "surveying",
-      "option_D" : "conservation",
-      "option_E" : "appropriation",
+      "category" : "Reading Comprehension",
+      "subcategory" : "Direct Comprehension",
+      "passage" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change. Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
+      "option_A" : "The burning of fossil fuels would eventually cease to produce atmospheric accumulations of carbon dioxide.",
+      "option_B" : "The proportion of the delivered price of electricity due to generation would rise and then decline.",
+      "option_C" : "Power plants would consume progressively lower quantities of fossil fuels.",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "B",
+      "answer_explanation" : "Here is the explanation of question 2. Here is an additional explanation why the answer is correct."
+  },
+
+  "4" : {
+      "text" : "Select the sentence that explains why an outcome of sequestration that might have been expected would not occur.",
+      "course" : "GRE",
+      "section" : "Verbal Comprehension",
+      "category" : "Reading Comprehension",
+      "subcategory" : "Purpose/Rhetorical Strategy",
+      "passage" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change. Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
+      "option_A" : "Policymakers must confront the dilemma that fossil fuels continue to be an indispensable source of energy even though burning them produces atmospheric accumulations of carbon dioxide that increase the likelihood of potentially disastrous global climate change.",
+      "option_B" : "Currently, technology that would capture carbon dioxide emitted by power plants and sequester it harmlessly underground or undersea instead of releasing it into the atmosphere might double the cost of generating electricity. ",
+      "option_C" : "But because sequestration does not affect the cost of electricity transmission and distribution, delivered prices will rise less, by no more than 50 percent. ",
+      "option_D" : "Research into better technologies for capturing carbon dioxide will undoubtedly lead to lowered costs.",
+      "option_E" : "",
+      "answer_letter" : "C",
+      "answer_explanation" : "Here is the explanation of question 3. Here is an additional explanation why the answer is correct."
+  },
+
+  "5" : {
+      "text" : "The figure above shows a circle with center C and radius 6. What is the sum of the areas of the two shaded regions?",
+      "course" : "GRE",
+      "section" : "Quantitative Comprehension",
+      "category" : "Geometry and Measurement",
+      "subcategory" : "Arc Lengths and Areas for Sectors",
+      "passage" : "",
+      "option_A" : "7.5&pi;",
+      "option_B" : "6&pi;",
+      "option_C" : "4.5&pi;",
+      "option_D" : "4&pi;",
+      "option_E" : "3&pi;",
+      "answer_letter" : "D",
+      "answer_explanation" : "Here is the explanation of question 10. Here is an additional explanation why the answer is correct."
+  },
+
+  "6" : {
+      "text" : "The passage addresses which of the following issues related to Glass's use of popular elements in his classical compositions?",
+      "course" : "GRE",
+      "section" : "Verbal Comprehension",
+      "category" : "Reading Comprehension",
+      "subcategory" : "Purpose/Rhetorical Strategy",
+      "passage" : "Reviving the practice of using elements of popular music in classical composition, an approach that had been in hibernation in the United States during the 1960s, composer Philip Glass (born 1937) embraced the ethos of popular music in his compositions. Glass based two symphonies on music by rock musicians David Bowie and Brian Eno, but the symphonies' sound is distinctively his. Popular elements do not appear out of place in Glass's classical music, which from its early days has shared certain harmonies and rhythms with rock music. Yet this use of popular elements has not made Glass a composer of popular music. His music is not a version of popular music packaged to attract classical listeners; it is high art for listeners steeped in rock rather than the classics.",
+      "option_A" : "How it is regarded by listeners who prefer rock to the classics",
+      "option_B" : "How it has affected the commercial success of Glass's music",
+      "option_C" : "Whether it has contributed to a revival of interest among other composers in using popular elements in their compositions",
+      "option_D" : "Whether it has had a detrimental effect on Glass's reputation as a composer of classical music",
+      "option_E" : "Whether it has caused certain of Glass's works to be derivative in quality",
       "answer_letter" : "E",
-      "answer_explanation" : "Here is the explanation of question 7. Here is an additional explanation why the answer is correct."
+      "answer_explanation" : "Here is the explanation of question 4. Here is an additional explanation why the answer is correct."
+  },
+
+  "7" : {
+      "text" : "The passage suggests that Glass's work displays which of the following qualities?",
+      "course" : "GRE",
+      "section" : "Verbal Comprehension",
+      "category" : "Reading Comprehension",
+      "subcategory" : "Main Idea",
+      "passage" : "Reviving the practice of using elements of popular music in classical composition, an approach that had been in hibernation in the United States during the 1960s, composer Philip Glass (born 1937) embraced the ethos of popular music in his compositions. Glass based two symphonies on music by rock musicians David Bowie and Brian Eno, but the symphonies' sound is distinctively his. Popular elements do not appear out of place in Glass's classical music, which from its early days has shared certain harmonies and rhythms with rock music. Yet this use of popular elements has not made Glass a composer of popular music. His music is not a version of popular music packaged to attract classical listeners; it is high art for listeners steeped in rock rather than the classics.",
+      "option_A" : "A return to the use of popular music in classical compositions",
+      "option_B" : "An attempt to elevate rock music to an artistic status more closely approximating that of classical music",
+      "option_C" : "A long-standing tendency to ignore elements from two apparently disparate musical styles",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "A",
+      "answer_explanation" : "Here is the explanation of question 5. Here is an additional explanation why the answer is correct."
   },
 
   "8" : {
-      "text" : "Although it does contain some pioneering ideas, one would hardly characterize the work as __________.",
-      "course" : "GRE",
-      "section" : "Verbal Comprehension",
-      "category" : "Sentence Completion",
-      "subcategory" : "Context Single Word Replacement",
-      "passage" : "For each blank select one entry from the corresponding column of choices. Fill all blanks in the way that best completes the text.",
-      "option_A" : "orthodox",
-      "option_B" : "eccentric",
-      "option_C" : "original",
-      "option_D" : "trifling",
-      "option_E" : "conventional",
-      "answer_letter" : "C",
-      "answer_explanation" : "Here is the explanation of question 8. Here is an additional explanation why the answer is correct."
-  },
-
-  "9" : {
       "text" : "Quantity A: x<sup>2</sup> + 1 | Quantity B: 2x - 1",
       "course" : "GRE",
       "section" : "Quantitative Comprehension",
@@ -143,20 +127,36 @@
       "answer_explanation" : "Here is the explanation of question 9. Here is an additional explanation why the answer is correct."
   },
 
-  "10" : {
-      "text" : "The figure above shows a circle with center C and radius 6. What is the sum of the areas of the two shaded regions?",
+  "9" : {
+      "text" : "From the outset, the concept of freedom of the seas from the proprietary claims of nations was challenged by a contrary notion — that of the _______ of the oceans for reasons of national security and profit.",
       "course" : "GRE",
-      "section" : "Quantitative Comprehension",
-      "category" : "Geometry and Measurement",
-      "subcategory" : "Arc Lengths and Areas for Sectors",
-      "passage" : "",
-      "option_A" : "7.5&pi;",
-      "option_B" : "6&pi;",
-      "option_C" : "4.5&pi;",
-      "option_D" : "4&pi;",
-      "option_E" : "3&pi;",
-      "answer_letter" : "D",
-      "answer_explanation" : "Here is the explanation of question 10. Here is an additional explanation why the answer is correct."
+      "section" : "Verbal Comprehension",
+      "category" : "Sentence Completion",
+      "subcategory" : "Context Single Word Replacement",
+      "passage" : "For each blank select one entry from the corresponding column of choices. Fill all blanks in the way that best completes the text.",
+      "option_A" : "promotion",
+      "option_B" : "exploration",
+      "option_C" : "surveying",
+      "option_D" : "conservation",
+      "option_E" : "appropriation",
+      "answer_letter" : "E",
+      "answer_explanation" : "Here is the explanation of question 7. Here is an additional explanation why the answer is correct."
+  },
+
+  "10" : {
+      "text" : "Although it does contain some pioneering ideas, one would hardly characterize the work as __________.",
+      "course" : "GRE",
+      "section" : "Verbal Comprehension",
+      "category" : "Sentence Completion",
+      "subcategory" : "Context Single Word Replacement",
+      "passage" : "For each blank select one entry from the corresponding column of choices. Fill all blanks in the way that best completes the text.",
+      "option_A" : "orthodox",
+      "option_B" : "eccentric",
+      "option_C" : "original",
+      "option_D" : "trifling",
+      "option_E" : "conventional",
+      "answer_letter" : "C",
+      "answer_explanation" : "Here is the explanation of question 8. Here is an additional explanation why the answer is correct."
   },
 
   "11" : {

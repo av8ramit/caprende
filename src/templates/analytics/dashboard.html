@@ -1,17 +1,32 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block title %}Question | {% endblock %}
 
+{% block javascript %}
+    <script src="{% static 'raphael-2.1.4.min.js' %}"></script>
+    <script src="{% static 'justgage.js' %}"></script>
+{% endblock %}
+
 {% block content %}
+<style>
+      #g1, #g2, #g3 {
+        width:170px; height:140px;
+        display: inline-block; 
+        margin: 1em;
+      }
 
-<div class="col-sm-9 col-sm-offset-2 main">
+</style>
+<div class="col-sm-8 col-sm-offset-3 main">
     <div class="jumbotron">
-
+        <div  id = "g1"></div>
+        <div  id = "g2"></div>
+        <div  id = "g3"></div>
         <h1>{{ question.category_string }}</h1><br>
 
         <table class = 'table'>
-            {% for dataset in category_datasets %}
+            {% for dataset in weakest_cats %}
                 <tr>
                     <td>{{ dataset.category.name }}</td>
                     <td>{{ dataset.percent }}</td>
@@ -21,5 +36,62 @@
 
     </div>
 </div>
+<script>
+var g1, g2, g3, g4;
+window.onload= function(){
+
+var g1 = new JustGage({
+    id: "g1",
+    value: {{ weakest_cats.0.percent }},
+    min: 0,
+    max: 100,
+    title: "{{ weakest_cats.0.category.name }}",
+    label: "",
+    levelColors: [
+    "#ff3b3b",
+    "#00a2ff",
+    "#62d184",
+    ],
+    startAnimationTime: 2000,
+    startAnimationType: "bounce",
+    gaugeWidthScale: 0.25
+
+});
+var g2 = new JustGage({
+    id: "g2",
+    value: {{ weakest_cats.1.percent }},
+    min: 0,
+    max: 100,
+    title: "{{ weakest_cats.1.category.name }}",
+    label: "",
+    levelColors: [
+    "#ff3b3b",
+    "#00a2ff",
+    "#62d184",
+    ],
+    startAnimationTime: 2000,
+    startAnimationType: "bounce",
+    gaugeWidthScale: 0.25
+});
+var g3 = new JustGage({
+    id: "g3",
+    value: {{ weakest_cats.2.percent }},
+    min: 0,
+    max: 100,
+    title: "{{ weakest_cats.2.category.name }}",
+    label: "",
+    levelColors: [
+    "#ff3b3b",
+    "#ffff27",
+    "#62d184",
+    ],
+    startAnimationTime: 2000,
+    startAnimationType: "bounce",
+    gaugeWidthScale: 0.25
+});
+
+
+};
+</script>
 
 {% endblock content %}

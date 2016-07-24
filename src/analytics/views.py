@@ -8,9 +8,10 @@ from .models import CategoryDataSet #, SubCategoryDataSet
 def dashboard(request):
     '''Returns the view of the dashboard.'''
     category_datasets = CategoryDataSet.objects.sort_by_user(request.user)
-    print category_datasets
+    weakest_cats = category_datasets[:3]
+    print weakest_cats
     context = {
-        "category_datasets" : category_datasets,
+        "weakest_cats" : weakest_cats,
         "dashboard" : True,
     }
     return render(request, "analytics/dashboard.html", context)
