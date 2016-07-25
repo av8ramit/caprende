@@ -9,7 +9,6 @@ def dashboard(request):
     '''Returns the view of the dashboard.'''
     category_datasets = CategoryDataSet.objects.sort_by_user(request.user)
     weakest_cats = category_datasets[:3]
-    print weakest_cats
     context = {
         "weakest_cats" : weakest_cats,
         "dashboard" : True,

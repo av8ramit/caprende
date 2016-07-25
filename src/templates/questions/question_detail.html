@@ -8,25 +8,41 @@
 <div class="col-sm-8 col-sm-offset-3 main">
     <div class="jumbotron">
         <div class="row">
-            <div class="col-sm-9">
+                <div class="col-sm-2">
+                    {% if question.get_prev_url %}
+                        <nav>
+                          <ul class="pager">
+                            <li class="prev"><a href="{{ question.get_prev_url }}">Prev <span aria-hidden="true">&larr;</span></a></li>
+                          </ul>
+                        </nav>
+                    {% endif %}
+                </div>
+            <div class="col-sm-8" text-align="center">
                 <h1>{{ question.category_string }}</h1>
             </div>
-            <div class="col-sm-3">
-                <nav>
-                  <ul class="pager">
-                    <li class="next"><a href="{{ question.get_next_url }}">Next <span aria-hidden="true">&rarr;</span></a></li>
-                  </ul>
-                </nav>
-            </div>
+                <div class="col-sm-2">
+                    {% if question.get_next_url %}
+                        <nav>
+                          <ul class="pager">
+                            <li class="next"><a href="{{ question.get_next_url }}">Next <span aria-hidden="true">&rarr;</span></a></li>
+                          </ul>
+                        </nav>
+                    {% endif %}
+                </div>
         </div>
         <hr>
         {% if question.figure %}
             <div class="questionfigure">
                 <img text-align="center" class="img" src="{{ question.figure.url }}" class="img-responsive">
             </div>
+            <hr>
         {% endif %}
-        <p>{{ question.passage }}</p>
-        <hr>
+        {% if question.passage %}
+            <div class="passage">
+                <p>{{ question.passage }}</p>
+            </div>
+            <hr>
+        {% endif %}
         <form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
             <p>{{ question.question_text|safe }}</p>
             {% for item, value, correct in question.choices %}

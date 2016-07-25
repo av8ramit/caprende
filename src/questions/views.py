@@ -94,6 +94,9 @@ def question_review(request, course_slug, question_index, response):
     comments = question.comment_set.all()
     comment_form = CommentForm()
 
+    if question.get_next_url() is None:
+        messages.info(request, "Congratulations, you've completed all the questions we offer. Check again soon for more.")
+
     for c in comments:
         c.get_children()
 

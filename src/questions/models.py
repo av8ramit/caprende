@@ -11,7 +11,7 @@ from categories.models import Category, SubCategory
 from course.models import Course, CourseSection
 from users.models import MyUser
 
-from .utils import next_question, upload_location
+from .utils import next_question, prev_question, upload_location
 
 # Create your models here.
 
@@ -75,8 +75,16 @@ class Question(models.Model):
     question_text = models.TextField(
         max_length=1000,
     )
+    question_text = models.TextField(
+        max_length=1000,
+    )
     passage = models.TextField(
         max_length=2000,
+        null=True,
+        blank=True,
+    )
+    source = models.CharField(
+        max_length=600,
         null=True,
         blank=True,
     )
@@ -129,6 +137,14 @@ class Question(models.Model):
     def get_absolute_url(self):
         '''Return the URL to the question.'''
         return reverse("question_detail", kwargs={"course_slug" : self.course.slug, "question_index" : self.index})
+
+    def get_prev_url(self):
+        '''Return the URL to the previous question.'''
+        prev_q = prev_question(self)
+        if prev_q:
+            return prev_q.get_absolute_url()
+        else:
+            return None
 
     def get_next_url(self):
         '''Return the URL to the next question.'''
