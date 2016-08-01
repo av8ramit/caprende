@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'comments',
     'contact',
     'course',
+    'notifications',
     'questions',
     'users',
 ]

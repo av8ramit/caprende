@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class='row'>
+	<div class="col-sm-8 col-sm-offset-3 main">
+		<h1>Notifications</h1>
+		<hr>
+	</div>
+</div>
+
+<div class='row'>
+	<div class="col-sm-8 col-sm-offset-3 main">
+	{% if notifications %}
+		<table class='table'>
+		{% for note in notifications %}
+		<tr><td>{{ note|safe }}</td><td>{% if note.read %} Read {% else %} Unread {% endif %}</td></tr>
+		{% endfor %}
+		</table>
+	{% else %}
+	<p class='lead'>This is where your notifications will appear once you have them.</p>
+	{% endif %}
+	</div>
+</div>
+
+{% endblock %}
