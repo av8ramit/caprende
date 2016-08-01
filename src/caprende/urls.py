@@ -25,6 +25,7 @@ from categories import views as categories_views
 from comments import views as comment_views
 from contact import views as contact_views
 from course import views as course_views
+from notifications import views as notifications_views
 from questions import views as question_views
 from users import views as users_views
 
@@ -80,6 +81,14 @@ urlpatterns += [
 urlpatterns += [
     url(r'^dashboard/$', analytics_views.dashboard, name='dashboard'),
 ]
+
+#notifications models URLS
+urlpatterns += [
+    url(r'^notifications/$', notifications_views.all, name='notifications_all'),
+    url(r'^notifications/ajax/$', notifications_views.get_notifications_ajax, name='get_notifications_ajax'),
+    url(r'^notifications/(?P<id>\d+)/$', notifications_views.read, name='notifications_read'),
+]
+
 
 #static file imports
 if settings.DEBUG:
