@@ -62,12 +62,12 @@ class NotificationManager(models.Manager):
         '''Return a recent amount of notifications for a user.'''
         return self.get_queryset().by_user(user)[:num]
 
-    def create(self, text, user, link):
+    def create(self, text, recipient, link):
         '''Create and return a Notification object.'''
 
         notification = self.model(
             text=text,
-            recipient=user,
+            recipient=recipient,
             read=False,
             link=link
         )

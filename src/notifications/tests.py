@@ -72,7 +72,7 @@ class NotificationTests(TestCase):
 
         notification = Notification.objects.create(
             text="Notification test",
-            user=self.user,
+            recipient=self.user,
             link=self.question.get_absolute_url()
         )
 

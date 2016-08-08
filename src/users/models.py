@@ -99,6 +99,12 @@ class MyUser(AbstractBaseUser):
         '''The user is identified by username.'''
         return self.profile.get_full_name()
 
+class UserProfileManager(models.Manager):
+    '''Model manager for the UserProfile class.'''
+
+    def get_profiles_by_course(self, course):
+        '''Return all users that belong to a particular class.'''
+        return self.filter(course=course)
 
 class UserProfile(models.Model):
     '''Base model custom User class for authentication.'''
@@ -143,6 +149,8 @@ class UserProfile(models.Model):
     next_question_index = models.PositiveIntegerField(
         default=1
     )
+
+    objects = UserProfileManager()
 
     def update(self,
                first_name=None,

@@ -7,7 +7,9 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 
 from categories.models import Category, SubCategory
+from notifications.models import Notification
 from questions.models import Question
+from users.models import UserProfile
 
 from .forms import CourseUploadForm, QuestionUploadForm
 from .models import Course, CourseSection
@@ -89,7 +91,18 @@ def course_detail(request, slug):
                         answer_explanation=data[index]["answer_explanation"]
                     )
                     question.save()
-                messages.success(request, "JSON file for questions was successfully uploaded.")
+
+                #Notify all relevant users new questions have been added
+                for profile in UserProfile.objects.get_profiles_by_course(course=course):
+                    user = profile.user
+                    Notification.objects.create(
+                        text="We have added new questions to our %s course. Check them out!" % course.name,
+                        recipient=user,
+                        link=Question.objects.get(index=user.profile.next_question_index).get_absolute_url()
+                    )
+
+                messages.success(request, "JSON file for questions was successfully uploaded. All %s users have been notified." % course)
+
 
         return redirect("course_detail", slug=slug)
     return render(request, "course/course_detail.html", context)

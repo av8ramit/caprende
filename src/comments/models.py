@@ -89,3 +89,17 @@ class Comment(models.Model):
         '''Returns the URL of the comment thread.'''
         return reverse("comment_thread", kwargs={"comment_id": self.id})
 
+    def get_affected_users(self):
+        '''Returns the affected users of a comment thread.'''
+
+        comment_children = self.get_children()
+        if comment_children is not None:
+            users = [self.user] #Add the parent comment user
+            for comment in comment_children:
+                if comment.user in users:
+                    pass
+                else:
+                    users.append(comment.user)
+            return users
+
+        return []

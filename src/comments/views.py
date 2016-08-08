@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, HttpResponseRedirect
 
+from notifications.models import Notification
 from questions.models import Question
 
 from .forms import CommentForm
@@ -16,7 +17,7 @@ from .models import Comment
 def comment_thread(request, comment_id):
     '''View a comment thread on it's own page.'''
 
-    comment_parent = Comment.objects.get(comment_id)
+    comment_parent = Comment.objects.get(id=comment_id)
     form = CommentForm()
     context = {
         "comment" : comment_parent,
@@ -32,18 +33,18 @@ def comment_create_view(request):
         parent_id = request.POST.get('parent_id')
         question_id = request.POST.get('question_id')
 
-        try:
-            question = Question.objects.get(id=question_id)
-        except Question.model.DoesNotExist:
-            question = None
-
         if parent_id is not None:
             try:
-                parent_comment = Comment.objects.get(id=parent_id)
+                parent_comment = Comment.objects.get(id=int(parent_id))
             except Comment.model.DoesNotExist:
                 parent_comment = None
         else:
             parent_comment = None
+
+        try:
+            question = Question.objects.get(id=int(question_id))
+        except Question.DoesNotExist:
+            question = None
 
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -56,9 +57,21 @@ def comment_create_view(request):
                     text=comment_text,
                     question=question,
                     parent=parent_comment
-                    )
+                )
                 messages.success(request, "Thank you for your response.")
+                #Notification to thread writers
+                for user in parent_comment.get_affected_users():
+                    #User is the same as commentator
+                    if user == request.user:
+                        continue
+                    else:
+                        Notification.objects.create(
+                            text=str(request.user) + " has commented on a thread you are following.",
+                            recipient=user,
+                            link=parent_comment.get_absolute_url()
+                        )
                 return HttpResponseRedirect(parent_comment.get_absolute_url())
+
             #New Comment
             else:
                 new_comment = Comment.objects.create_comment(
