@@ -1,7 +1,9 @@
 Django==1.9.5
 astroid==1.4.5
+braintree==3.29.2
 colorama==0.3.7
 django-allauth==0.25.2
+django-betterforms==1.1.4
 django-crispy-forms==1.6.0
 lazy-object-proxy==1.2.2
 logilab-common==1.2.0

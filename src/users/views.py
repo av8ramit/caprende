@@ -1,11 +1,27 @@
 '''Views page for the users Caprende module.'''
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+
+from billing.models import Transaction
+from notifications.models import Notification
 
 from .forms import EditProfileForm
 
 # Create your views here.
+@login_required
+def user_account(request):
+    '''Return the view to the user account page.'''
+    notifications = Notification.objects.get_recent_for_user(request.user, 6)
+    transactions = Transaction.objects.get_recent_for_user(request.user, 3)
+    context = {
+        "notifications": notifications,
+        "transactions": transactions
+    }
+
+    return render(request, "users/user_account.html", context)
+
 def edit_profile(request):
     '''Return the view to the edit profile page.'''
 

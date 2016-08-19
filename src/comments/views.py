@@ -36,7 +36,7 @@ def comment_create_view(request):
         if parent_id is not None:
             try:
                 parent_comment = Comment.objects.get(id=int(parent_id))
-            except Comment.model.DoesNotExist:
+            except Comment.DoesNotExist:
                 parent_comment = None
         else:
             parent_comment = None

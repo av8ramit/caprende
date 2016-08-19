@@ -2,10 +2,12 @@
 # pylint: disable=no-self-use, no-member
 
 from __future__ import absolute_import
+
 import json
 import uuid
-
 from datetime import timedelta
+
+import braintree
 
 from django.conf import settings
 from django.contrib.auth.models import AnonymousUser, AbstractUser
@@ -23,6 +25,11 @@ from allauth.account.models import EmailAddress, EmailConfirmation
 from allauth.account.auth_backends import AuthenticationBackend
 from allauth.utils import get_user_model, get_current_site
 from allauth.account.utils import user_pk_to_url_str
+
+braintree.Configuration.configure(braintree.Environment.Sandbox,
+                                  merchant_id=settings.BRAINTREE_MERCHANT_ID,
+                                  public_key=settings.BRAINTREE_PUBLIC_KEY,
+                                  private_key=settings.BRAINTREE_PRIVATE_KEY)
 
 @override_settings(
     ACCOUNT_DEFAULT_HTTP_PROTOCOL='https',
@@ -42,6 +49,7 @@ class AccountTests(TestCase):
         user = get_user_model().objects.create(username='@raymond.penners')
         user.set_password('psst')
         user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         EmailAddress.objects.create(user=user,
                                     email='raymond.penners@gmail.com',
                                     primary=True,
@@ -105,12 +113,15 @@ class AccountTests(TestCase):
         self.assertEqual(resp['location'],
                          get_adapter().get_login_redirect_url(request))
         self.assertEqual(len(mail.outbox), 0)
-        return get_user_model().objects.get(username=username)
+        user = get_user_model().objects.get(username=username)
+        braintree.Customer.delete(user.usermerchantid.customer_id)
+        return user
 
     def _create_user(self):
         user = get_user_model().objects.create(username='john', is_active=True)
         user.set_password('doe')
         user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         return user
 
     def _create_user_and_login(self):
@@ -168,6 +179,7 @@ class AccountTests(TestCase):
             username='john', email='john@doe.org', is_active=True)
         user.set_password('doe')
         user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         self.client.post(
             reverse('account_reset_password'),
             data={'email': 'john@doe.org'})
@@ -187,6 +199,9 @@ class AccountTests(TestCase):
                        'password1': 'johndoe',
                        'password2': 'johndoe'},
                       follow=True)
+        user = get_user_model().objects.filter(
+            username='johndoe', is_active=True)[0]
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(mail.outbox[0].to, ['john@doe.com'])
         self.assertGreater(mail.outbox[0].body.find('https://'), 0)
@@ -246,6 +261,7 @@ class AccountTests(TestCase):
         u = get_user_model().objects.create(
             username='test',
             email='foo@bar.com')
+        braintree.Customer.delete(u.usermerchantid.customer_id)
         request = RequestFactory().get('/')
         EmailAddress.objects.add_email(request, u, u.email, confirm=True)
         self.assertTrue(mail.outbox[0].subject[1:].startswith(site.name))
@@ -259,6 +275,7 @@ class AccountTests(TestCase):
         user = get_user_model().objects.create(username='john')
         user.set_password('doe')
         user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         EmailAddress.objects.create(user=user,
                                     email='john@example.com',
                                     primary=True,
@@ -280,6 +297,7 @@ class AccountTests(TestCase):
         user = get_user_model().objects.create(username='john')
         user.set_password('doe')
         user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         EmailAddress.objects.create(user=user,
                                     email='john@example.com',
                                     primary=True,
@@ -308,6 +326,7 @@ class AccountTests(TestCase):
         user = get_user_model().objects.create(username='john')
         user.set_password('doe')
         user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         EmailAddress.objects.create(user=user,
                                     email='john@example.com',
                                     primary=True,
@@ -321,8 +340,10 @@ class AccountTests(TestCase):
     def test_ajax_password_reset(self):
         '''Test ajax password reset.'''
 
-        get_user_model().objects.create(
+        user = get_user_model().objects.create(
             username='john', email='john@doe.org', is_active=True)
+        user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         resp = self.client.post(
             reverse('account_reset_password'),
             data={'email': 'john@doe.org'},
@@ -340,6 +361,7 @@ class AccountTests(TestCase):
         user = get_user_model().objects.create(username='john', is_active=True)
         user.set_password('doe')
         user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         resp = self.client.post(reverse('account_login'),
                                 {'login': 'john',
                                  'password': 'doe'},
@@ -364,6 +386,7 @@ class AccountTests(TestCase):
         user = get_user_model().objects.create(username='john', is_active=True)
         user.set_password('doe')
         user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         c = Client()
         c.login(username='john', password='doe')
         return c, getattr(c, method)(reverse('account_logout'))
@@ -381,6 +404,9 @@ class AccountTests(TestCase):
                        'email': 'john@doe.com',
                        'password1': 'johndoe',
                        'password2': 'johndoe'})
+        user = get_user_model().objects.filter(
+            username='johndoe', is_active=True)[0]
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         # Logged in
         self.assertRedirects(resp,
                              settings.LOGIN_REDIRECT_URL,
@@ -442,6 +468,7 @@ class EmailFormTests(TestCase):
                                         email='john1@doe.org')
         self.user.set_password('doe')
         self.user.save()
+        braintree.Customer.delete(self.user.usermerchantid.customer_id)
         self.email_address = EmailAddress.objects.create(
             user=self.user,
             email=self.user.email,
@@ -590,6 +617,7 @@ class AuthenticationBackendTests(TestCase):
             username='john')
         user.set_password(user.username)
         user.save()
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         self.user = user
 
     @override_settings(

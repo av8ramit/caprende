@@ -3,14 +3,23 @@
 
 from __future__ import unicode_literals
 
-from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-from django.db.models.signals import post_save
+import braintree
 
+from django.conf import settings
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.db import models
+from django.db.models.signals import post_save
+from django.http import Http404
+
+from billing.models import UserMerchantId
 from course.models import Course
 
 from .utils import upload_location, UNIVERSITY_LIST, MAJOR_LIST
 
+braintree.Configuration.configure(braintree.Environment.Sandbox,
+                                  merchant_id=settings.BRAINTREE_MERCHANT_ID,
+                                  public_key=settings.BRAINTREE_PUBLIC_KEY,
+                                  private_key=settings.BRAINTREE_PRIVATE_KEY)
 
 class MyUserManager(BaseUserManager):
     '''Model manager for the MyUser class.'''
@@ -30,6 +39,24 @@ class MyUserManager(BaseUserManager):
         )
         user.set_password(password)
         user.save(using=self._db)
+        return user
+
+    def create_test_user(self, username=None, email=None, password=None):
+        '''Creates and saves a User with the given username, email and password.'''
+
+        if not username:
+            raise ValueError('Must include username')
+
+        if not email:
+            raise ValueError('Users must have an email address')
+
+        user = self.model(
+            username=username,
+            email=self.normalize_email(email),
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        braintree.Customer.delete(user.usermerchantid.customer_id)
         return user
 
     def create_superuser(self, username, email, password):
@@ -204,6 +231,18 @@ def new_user_receiver(sender, instance, created, *args, **kwargs):
     '''Receiver function for new user creation.'''
     if created:
         UserProfile.objects.create(user=instance)
+    try:
+        merchant_obj = UserMerchantId.objects.get(user=instance)
+    except UserMerchantId.DoesNotExist:
+        new_customer_result = braintree.Customer.create({
+            "email" : instance.email
+        })
+        if new_customer_result.is_success:
+            merchant_obj, created = UserMerchantId.objects.get_or_create(user=instance)
+            merchant_obj.customer_id = new_customer_result.customer.id
+            merchant_obj.save()
+        else:
+            raise Http404("There was an error with your account. Please contact us.")
 
 def new_profile_receiver(sender, instance, created, *args, **kwargs):
     '''Receiver function for new profile creation.'''
