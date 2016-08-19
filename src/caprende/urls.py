@@ -21,6 +21,7 @@ from django.contrib import admin
 from allauth.account.views import confirm_email
 
 from analytics import views as analytics_views
+from billing import views as billing_views
 from categories import views as categories_views
 from comments import views as comment_views
 from contact import views as contact_views
@@ -45,6 +46,7 @@ urlpatterns += [
 #user model URLS
 urlpatterns += [
     url(r'^edit_profile/$', users_views.edit_profile, name='edit_profile'),
+    url(r'^user_account/$', users_views.user_account, name='user_account'),
 ]
 
 #categories model URLS
@@ -89,6 +91,12 @@ urlpatterns += [
     url(r'^notifications/(?P<id>\d+)/$', notifications_views.read, name='notifications_read'),
 ]
 
+#auth login/logout
+urlpatterns += [
+    url(r'^upgrade/$', billing_views.upgrade, name='account_upgrade'),
+    url(r'^billing/$', billing_views.history, name='billing_history'),
+    url(r'^billing/cancel/$', billing_views.cancel_subscription, name='cancel_subscription'),
+]
 
 #static file imports
 if settings.DEBUG:

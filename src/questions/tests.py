@@ -75,7 +75,7 @@ class QuestionTests(TestCase):
         self.subcategory2.save()
 
         #User creation
-        self.user = MyUser.objects.create_user(
+        self.user = MyUser.objects.create_test_user(
             username="test",
             email="test@yahoo.com",
             password="password1!",

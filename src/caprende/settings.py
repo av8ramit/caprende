@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     #Project applications
     'analytics',
+    'billing',
     'categories',
     'comments',
     'contact',
@@ -179,5 +180,15 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
 
 
+#Braintree Information
+BRAINTREE_MERCHANT_ID = "2k2db7j5cvqgmf4q"
+BRAINTREE_PUBLIC_KEY = "yyt73ck5rjbswz9k"
+BRAINTREE_PRIVATE_KEY = "5521d77b0e7b54c40935cade9221e2d2"
 
+"""
+#Braintree Information
+BRAINTREE_MERCHANT_ID = "bndnh7nw8yswy6h2"
+BRAINTREE_PUBLIC_KEY = "drp7g8tts9tnt79s"
+BRAINTREE_PRIVATE_KEY = "44a9814983dd856f6d6c37e6c8c4bde1"
+"""
 
