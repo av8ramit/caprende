@@ -4,16 +4,16 @@
 {% block content %}
 
 <div class='row'>
-	<div class="col-sm-8 col-sm-offset-3 main">
+	<div class="col-sm-10 col-sm-offset-2 main">
 		<h1>Notifications</h1>
-		<hr>
+		<br>
 	</div>
 </div>
 
 <div class='row'>
-	<div class="col-sm-8 col-sm-offset-3 main">
+	<div class="col-sm-10 col-sm-offset-2 main">
 	{% if notifications %}
-		<table class='table'>
+		<table class='table table-striped'>
 		{% for note in notifications %}
 		<tr><td>{{ note|safe }}</td><td>{% if note.read %} Read {% else %} Unread {% endif %}</td></tr>
 		{% endfor %}

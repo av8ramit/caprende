@@ -29,6 +29,14 @@ def question_detail(request, course_slug, question_index):
 
     course = Course.objects.all().get(slug=course_slug)
     question = get_object_or_404(Question, course=course, index=question_index)
+    category_data_set = CategoryDataSet.objects.sort_by_user(request.user).filter(category=question.category)
+
+    if len(category_data_set) == 0:
+        total = 0
+        correct = 0
+    else:
+        correct = category_data_set[0].correct
+        total = correct + category_data_set[0].missed
 
     #If a response exists, redirect to the review page
     response = QuestionResponse.objects.get_queryset().get_response(user=request.user, question=question)
@@ -36,7 +44,7 @@ def question_detail(request, course_slug, question_index):
         return HttpResponseRedirect(reverse('question_review', kwargs={
             'course_slug' : course.slug,
             'question_index' : question_index,
-            'response' : response.attempt,
+            'response' : response.attempt
         }))
 
     #First user attempt at this question
@@ -82,7 +90,9 @@ def question_detail(request, course_slug, question_index):
         context = {
             "question" : question,
             "form" : form,
-            "practice" : True
+            "practice" : True,
+            "correct" : correct,
+            "total" : total,
         }
         return render(request, "questions/question_detail.html", context)
 
@@ -91,6 +101,10 @@ def question_review(request, course_slug, question_index, response):
     '''Return to the view of the question.'''
 
     question = get_object_or_404(Question, course=Course.objects.all().get(slug=course_slug), index=question_index)
+    category_data_set = CategoryDataSet.objects.sort_by_user(request.user).filter(category=question.category)
+    correct = category_data_set[0].correct
+    total = correct + category_data_set[0].missed
+
     comments = question.comment_set.all()
     comment_form = CommentForm()
 
@@ -104,6 +118,9 @@ def question_review(request, course_slug, question_index, response):
         "question" : question,
         "response" : response,
         "comments" : comments,
-        "comment_form": comment_form
+        "practice" : True,
+        "comment_form": comment_form,
+        "correct" : correct,
+        "total" : total,
     }
     return render(request, "questions/question_review.html", context)

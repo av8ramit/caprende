@@ -63,7 +63,7 @@ def update_membership_status(sender, instance, created, **kwargs):
     if created:
         pass
     else:
-        instance.update_membership_status()
+        instance.update_status()
 
 post_save.connect(update_membership_status, sender=Membership)
 

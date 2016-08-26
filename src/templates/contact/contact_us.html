@@ -6,11 +6,10 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<div class="col-sm-7 col-sm-offset-3 main">
+<div class="col-sm-9 col-sm-offset-2 main">
 {% else %}
 <div class="col-sm-8 col-sm-offset-2 main">
 {% endif %}
-    <div class="jumbotron">
         <h1>Contact Us</h1>
 
         <form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}

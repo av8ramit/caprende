@@ -1,11 +1,11 @@
 {% load staticfiles %}
-<div class="col-sm-3 col-md-2 sidebar">
+<div class="col-sm-2 sidebar">
     <ul class="nav nav-sidebar">
         <div class="profile">
             {% if user.profile.profile_image %}
-                <img class="img-circle" src="{{ user.profile.profile_image.url }}" width="100" height="100" class="img-responsive">
+                <img class="img" src="{{ user.profile.profile_image.url }}" width="100" height="100" class="img-responsive">
             {% else %}
-                <a href="{% url 'edit_profile' %}"><img class="img-circle" src="{% static 'img/users/profile.jpg' %}" width="100" height="100" class="img-responsive"></a>
+                <a href="{% url 'edit_profile' %}"><img class="img" src="{% static 'img/users/profile.jpg' %}" width="100" height="100" class="img-responsive"></a>
             {% endif %}
             <h3>{{ user.profile.get_full_name }}</h3>
             <p>{{ user.profile.university }}</p>
@@ -19,9 +19,9 @@
     </ul>
         <div class="profile">
                 {% if user.profile.motivational_image %}
-                <img class="img-circle" src="{{ user.profile.motivational_image.url }}" width="100" height="100" class="img-responsive">
+                <img class="img" src="{{ user.profile.motivational_image.url }}" width="100" height="100" class="img-responsive">
             {% else %}
-                <a href="{% url 'edit_profile' %}"><img class="img-circle" src="{% static 'img/users/profile.jpg' %}" width="100" height="100" class="img-responsive"></a>
+                <a href="{% url 'edit_profile' %}"><img class="img" src="{% static 'img/users/profile.jpg' %}" width="100" height="100" class="img-responsive"></a>
             {% endif %}
             <h3>On your way!</h3>
             <p>Stay motivated.</p>

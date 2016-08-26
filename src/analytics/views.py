@@ -2,15 +2,14 @@
 
 from django.shortcuts import render
 
-from .models import CategoryDataSet #, SubCategoryDataSet
+from .models import SubCategoryDataSet
 
 # Create your views here.
 def dashboard(request):
     '''Returns the view of the dashboard.'''
-    category_datasets = CategoryDataSet.objects.sort_by_user(request.user)
-    weakest_cats = category_datasets[:3]
+    subcategory_datasets = SubCategoryDataSet.objects.sort_by_user(request.user)
     context = {
-        "weakest_cats" : weakest_cats,
+        "subcats" : subcategory_datasets,
         "dashboard" : True,
     }
     return render(request, "analytics/dashboard.html", context)
