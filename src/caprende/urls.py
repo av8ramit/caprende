@@ -30,11 +30,12 @@ from notifications import views as notifications_views
 from questions import views as question_views
 from users import views as users_views
 
-from .views import home
+from .views import home, about_us
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name='home'),
+    url(r'^about_us/$', about_us, name='about_us'),
 ]
 
 #allauth accounts URLS
@@ -82,6 +83,8 @@ urlpatterns += [
 #analytics model URLS
 urlpatterns += [
     url(r'^dashboard/$', analytics_views.dashboard, name='dashboard'),
+    url(r'^peer_analytics/$', analytics_views.peer_analytics, name='peer_analytics'),
+    url(r'^in_depth/$', analytics_views.in_depth, name='in_depth'),
 ]
 
 #notifications models URLS
@@ -91,7 +94,7 @@ urlpatterns += [
     url(r'^notifications/(?P<id>\d+)/$', notifications_views.read, name='notifications_read'),
 ]
 
-#auth login/logout
+#billing models URLS
 urlpatterns += [
     url(r'^upgrade/$', billing_views.upgrade, name='account_upgrade'),
     url(r'^billing/$', billing_views.history, name='billing_history'),

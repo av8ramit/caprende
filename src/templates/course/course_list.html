@@ -9,6 +9,7 @@
 {% else %}
 <div class="col-sm-8 col-sm-offset-2 main">
 {% endif %}
+	<br>
 	{% for course in queryset %}
 	    <div class="jumbotron">
 	        <a href='{{ course.get_absolute_url }}'><h1>{{ course.name }}</h1></a>

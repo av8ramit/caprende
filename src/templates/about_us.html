@@ -1,81 +1,88 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% load staticfiles %}
 
-{% block title %}Welcome | {% endblock %}
+{% block title %}About Us | {% endblock %}
 
 {% block content %}
 
-<div class="row">
-    <div class="col-sm-10 col-sm-offset-1 banner">
-        <br><br>
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-sm-7">
-                    <h1>Caprende</h1><hr>
-                    <h3>Learn it simply.</h3>
-                    <p>Studying today isn't efficient, easy, or as beneficial as we'd like to think. With our methods of categorization, analysis, and targeted studying, you'll see improvements in less time and effort.</p>
-                    <p>Caprende offers insight never before seen in traditional interview and prep studying. We analyze users with similar characteristics and use your performance to give you a comprehensive improvement plan.</p>
-                    <p>
-                      <a class="btn btn-lg btn-primary" href="{% url 'account_signup' %}" role="button">Register &raquo;</a>
-                    </p>
-                </div>
-                <div class="col-sm-5 homelogin">
-                    <h3>User Login</h3><hr>
-                    <form class="login" method="POST" action="{% url 'account_login' %}">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <button class="btn btn-success btn-block" type="submit">Sign In</button>
-                    </form><br>
-                </div>
+<!-- Main component for a primary marketing message or call to action -->
+
+{% if user.is_authenticated %}
+<div class="col-sm-10 col-sm-offset-2 main bluebox">
+{% else %}
+<div class="col-sm-10 col-sm-offset-1 main bluebox">
+{% endif %}
+
+    <h1>About Us</h1><hr>
+    <div class="row">
+        <div class="col-sm-12 about">
+            <div class="jumbotron">
+            <h2>What we do</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-primary" href="{% url 'course_list' %}" role="button">View details &raquo;</a></p>
             </div>
         </div>
-        <br>
-        <h1 class="sub-header">Courses</h1>
     </div>
-</div>
 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-<div class="col-sm-10 col-sm-offset-1" style="text-align:center">
-    <!-- Three columns of text below the carousel -->
+    <h1>Founders and Creators</h1><hr>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-4 founders">
+            <div class="jumbotron">
+                <img class="img" src="{% static 'img/users/profile.jpg' %}" class="img-responsive">
+                <h4>Amit Patankar (CEO)</h4>
+            </div>
+        </div>
+        <div class="col-sm-4 founders">
+            <div class="jumbotron">
+                <img class="img" src="{% static 'img/users/profile.jpg' %}" class="img-responsive">
+                <h4>Amit Patankar (CTO)</h4>
+            </div>
+        </div>
+        <div class="col-sm-4 founders">
+            <div class="jumbotron">
+                <img class="img" src="{% static 'img/users/profile.jpg' %}" class="img-responsive">
+                <h4>Amit Patankar (Marketing)</h4>
+            </div>
+        </div>
+    </div>
+
+    <h1>Courses we offer</h1><hr>
+    <div class="row">
+        <div class="col-sm-6">
             <h2>Behavioral Interviews</h2>
             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
             <p><a class="btn btn-primary" href="{% url 'course_list' %}" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
+        </div><!-- /.col-sm-6 -->
+        <div class="col-sm-6">
             <h2>Technical Interviews</h2>
             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
             <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
+        </div><!-- /.col-sm-6 -->
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
             <h2>LSAT</h2>
             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
             <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-sm-4 -->
-    </div>
-    <div class="row">
-        <div class="col-sm-4">
+        </div><!-- /.col-sm-6 -->
+        <div class="col-sm-6">
             <h2>GRE</h2>
             <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
             <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
+        </div><!-- /.col-sm-6 -->
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
             <h2>MCAT</h2>
             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
             <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
+        </div><!-- /.col-sm-6 -->
+        <div class="col-sm-6">
             <h2>GMAT</h2>
             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
             <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-sm-4 -->
+        </div><!-- /.col-sm-6 -->
     </div><!-- /.row -->
 </div>
-
-
 
 {% endblock content %}

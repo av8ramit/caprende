@@ -13,3 +13,19 @@ def dashboard(request):
         "dashboard" : True,
     }
     return render(request, "analytics/dashboard.html", context)
+
+def peer_analytics(request):
+    '''Returns the view of the peer analytics page.'''
+
+    context = {
+        "peer_analytics" : True,
+    }
+    return render(request, "analytics/peer_analytics.html", context)
+
+def in_depth(request):
+    '''Returns the view of the in depth anaytics page regarding your performance among all the subcategories.'''
+
+    context = {
+        "in_depth" : True,
+    }
+    return render(request, "analytics/in_depth.html", context)

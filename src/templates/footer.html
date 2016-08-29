@@ -1,11 +1,9 @@
 <footer class='footer' style='text-align:center'>
 	{% if user.is_authenticated %}
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-			<p>&copy; 2016 Caprende LLC</p>
-		</div>
+		<div class="col-sm-10 col-sm-offset-2">
 	{% else %}
-		<div class="col-sm-3 col-md-2">
-			<p>&copy; 2016 Caprende LLC</p>
-		</div>
+		<div class="col-sm-12">
 	{% endif %}
+			<p>&copy; 2016 Caprende LLC</p> <p><a href="{% url 'about_us' %}"> About Us </a>&nbsp;|&nbsp; <a href="{% url 'contact_us' %}">Contact Us</a> &nbsp;|&nbsp; <a href="{% url 'account_signup' %}">Register</a></p>
+		</div>
 </footer>
