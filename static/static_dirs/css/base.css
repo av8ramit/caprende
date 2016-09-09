@@ -31,11 +31,20 @@ hr {
 
 .navbar-fixed-top {
     border: 0;
-    background-color: #205081;
+    background-color: #2c3e50;
   }
 
 .navbar-inverse .navbar-nav>li>a {
     color: #FFFFFF;
+}
+
+.navbar-fixed-top li:hover {
+    background-color:#3cc47c;
+}
+
+.sidebar a {
+    color: #2c3e50;
+    text-decoration: none;
 }
 
 /*
@@ -49,7 +58,7 @@ hr {
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
-    top: 51px;
+    top: 50px;
     bottom: 0;
     left: 0;
     z-index: 1000;
@@ -59,6 +68,7 @@ hr {
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
+    color: #2c3e50;
   }
 }
 
@@ -76,9 +86,12 @@ hr {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #205081;
+  background-color: #2c3e50;
 }
 
+.sidebar li:hover {
+    background-color:#3cc47c;
+}
 
 /*
  * Main content
@@ -137,7 +150,7 @@ hr {
 }
 
 .founders .jumbotron {
-  background-color: #205081;
+  background-color: #3cc47c;
   color: white;
   text-align: center;
 }
@@ -146,9 +159,14 @@ hr {
 }
 
 .bluebox header{
-  background-color: #205081;
-  border:1px solid #205081;
+  background-color: #2c3e50;
+  border:1px solid #2c3e50;
   border-radius: 5px;
+}
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 50px;
 }
 .bluebox h1{
   text-align: center;
@@ -196,18 +214,19 @@ hr {
 }
 
 .gauge {
-  background-color: #337AB7;
+  background-color: #3cc47c;
   border-radius: 50%;
-  height: 200px;
-  width: 200px;
-  color: #FFFFFF;
+  height: 150px;
+  width: 150px;
+  color: #2c3e50;
   text-align: center;
   display: inline-block;
 }
 
 .gauge h1 {
   font-size: 60px;
-  padding-top: 30px;
+  padding-top: 20px;
+  color: #2c3e50;
 }
 
 .gauge h2 {
@@ -242,8 +261,10 @@ hr {
   text-align: center;
 }
 
+
+
 .footer {
-  background-color: #205081;
+  background-color: #2c3e50;
   color: #FFFFFF;
   min-height: 80px;
   margin-top: 20px;

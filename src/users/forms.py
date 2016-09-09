@@ -51,6 +51,6 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         '''Meta class invocation for UserProfile.'''
         model = UserProfile
-        fields = ('first_name', 'last_name', 'profile_image', 'course', 'motivational_image', 'university', 'major')
+        fields = ('first_name', 'last_name', 'profile_image', 'course', 'motivational_image', 'university', 'major', 'state')
 
 

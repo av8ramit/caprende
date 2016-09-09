@@ -54,6 +54,12 @@ class AnalyticsTests(TestCase):
             password="password1!",
         )
 
+        self.user2 = MyUser.objects.create_test_user(
+            username="test2",
+            email="test2@yahoo.com",
+            password="password1!",
+        )
+
         #Question creation
         self.question = Question(
             course=self.course,
@@ -138,3 +144,82 @@ class AnalyticsTests(TestCase):
                 assert dataset.missed == missed
                 assert dataset.correct == correct
                 assert dataset.percent == (correct * 100) / (correct + missed)
+
+    def test_category_data_set_by_state(self):
+        '''Test the retrieval by state function.'''
+
+        self.user.profile.update(course=self.course)
+        self.user2.profile.update(course=self.course)
+
+        self.user.profile.update(state="California")
+        self.user2.profile.update(state="California")
+
+        self.user.profile.update(major="Engineering")
+        self.user2.profile.update(major="Engineering")
+
+        self.user.profile.update(university="UC Berkeley")
+        self.user2.profile.update(university="UC Berkeley")
+
+        dataset = CategoryDataSet.objects.create(
+            user=self.user,
+            category=self.category,
+        )
+        dataset.add_correct()
+        dataset.add_correct()
+        dataset.add_correct()
+        dataset.add_miss()
+        dataset.add_miss()
+
+        assert CategoryDataSet.objects.stats_by_state(category=self.category, state="California") == (3, 5)
+        assert CategoryDataSet.objects.stats_by_major(category=self.category, major="Engineering") == (3, 5)
+        assert CategoryDataSet.objects.stats_by_university(category=self.category, university="UC Berkeley") == (3, 5)
+
+        dataset2 = CategoryDataSet.objects.create(
+            user=self.user2,
+            category=self.category,
+        )
+        dataset2.add_correct()
+
+        assert CategoryDataSet.objects.stats_by_state(category=self.category, state="California") == (4, 6)
+        assert CategoryDataSet.objects.stats_by_major(category=self.category, major="Engineering") == (4, 6)
+        assert CategoryDataSet.objects.stats_by_university(category=self.category, university="UC Berkeley") == (4, 6)
+
+    def test_subcategory_data_set_by_state(self):
+        '''Test the retrieval by state function.'''
+
+        self.user.profile.update(course=self.course)
+        self.user2.profile.update(course=self.course)
+
+        self.user.profile.update(state="California")
+        self.user2.profile.update(state="California")
+
+        self.user.profile.update(major="Engineering")
+        self.user2.profile.update(major="Engineering")
+
+        self.user.profile.update(university="UC Berkeley")
+        self.user2.profile.update(university="UC Berkeley")
+
+        dataset = SubCategoryDataSet.objects.create(
+            user=self.user,
+            subcategory=self.subcategory,
+        )
+        dataset.add_correct()
+        dataset.add_correct()
+        dataset.add_correct()
+        dataset.add_miss()
+        dataset.add_miss()
+
+        assert SubCategoryDataSet.objects.stats_by_state(subcategory=self.subcategory, state="California") == (3, 5)
+        assert SubCategoryDataSet.objects.stats_by_major(subcategory=self.subcategory, major="Engineering") == (3, 5)
+        assert SubCategoryDataSet.objects.stats_by_university(subcategory=self.subcategory, university="UC Berkeley") == (3, 5)
+
+        dataset = SubCategoryDataSet.objects.create(
+            user=self.user2,
+            subcategory=self.subcategory,
+        )
+        dataset.add_correct()
+
+        assert SubCategoryDataSet.objects.stats_by_state(subcategory=self.subcategory, state="California") == (4, 6)
+        assert SubCategoryDataSet.objects.stats_by_major(subcategory=self.subcategory, major="Engineering") == (4, 6)
+        assert SubCategoryDataSet.objects.stats_by_university(subcategory=self.subcategory, university="UC Berkeley") == (4, 6)
+

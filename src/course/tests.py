@@ -48,7 +48,7 @@ class CourseTests(TestCase):
         coursesection2 = CourseSection(name="Section 2", course=course)
         coursesection2.save()
 
-        assert len(course.coursesection_set.all()) == 2
+        assert len(course.get_all_sections()) == 2
 
         coursesection3 = CourseSection(name="Section 1", course=course)
         try:

@@ -69,6 +69,10 @@ class Category(models.Model):
         '''Return the URL to the category.'''
         return reverse("category_detail", kwargs={"slug": self.slug})
 
+    def get_all_sections(self):
+        '''Return all the subcategories by category.'''
+        return self.subcategory_set.all()
+
 def set_category_slug_receiver(sender, instance, created, *args, **kwargs):
     '''Receiver function for assigning a slug to a category.'''
 
