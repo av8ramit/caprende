@@ -80,6 +80,24 @@ class Course(models.Model):
         '''Return the URL for the course_detail for the particular course.'''
         return reverse("course_detail", kwargs={"slug": self.slug})
 
+    def get_all_sections(self):
+        '''Return all the sections by course.'''
+        return self.coursesection_set.all()
+
+    def get_all_categories(self):
+        '''Return all the categories by course.'''
+        categories = []
+        for section in self.get_all_sections():
+            categories += section.get_all_categories()
+        return categories
+
+    def get_all_subcategories(self):
+        '''Return all the subcategories by course.'''
+        subcategories = []
+        for category in self.get_all_categories():
+            subcategories += category.get_all_subcategories()
+        return subcategories
+
 def set_course_slug_receiver(sender, instance, created, *args, **kwargs):
     '''Receiver function for assigning a question the next index.'''
 
@@ -88,6 +106,28 @@ def set_course_slug_receiver(sender, instance, created, *args, **kwargs):
         instance.save()
 
 post_save.connect(set_course_slug_receiver, sender=Course)
+
+class CourseSectionQuerySet(models.query.QuerySet):
+    '''Course Query Set'''
+
+    def by_course(self, course):
+        '''Return all CourseSections from a given course.'''
+        return self.filter(course=course)
+
+class CourseSectionManager(models.Manager):
+    '''Course Model Manager'''
+
+    def get_queryset(self):
+        '''Get the queryset of Course.'''
+        return CourseSectionQuerySet(self.model, using=self._db)
+
+    def all(self):
+        '''Return all the courses.'''
+        return self.get_queryset()
+
+    def by_course(self, course):
+        '''Return the queryset by course.'''
+        return self.get_queryset().by_course(course=course)
 
 class CourseSection(models.Model):
     '''Base model for a Course Section Type.'''
@@ -101,6 +141,10 @@ class CourseSection(models.Model):
         default="",
         null=True
     )
+
+    def get_all_categories(self):
+        '''Return all the categories by section.'''
+        return self.category_set.all()
 
     class Meta:
         '''Meta class invocation for CourseSection class.'''

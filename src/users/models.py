@@ -4,6 +4,7 @@
 from __future__ import unicode_literals
 
 import braintree
+from localflavor.us.models import USStateField
 
 from django.conf import settings
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
@@ -126,12 +127,51 @@ class MyUser(AbstractBaseUser):
         '''The user is identified by username.'''
         return self.profile.get_full_name()
 
+class UserProfileQueryset(models.query.QuerySet):
+    '''QuerySet for the UserProfile class.'''
+
+    def get_profiles_by_course(self, course):
+        '''Return all user profiles that belong to a particular class.'''
+        return self.filter(course=course)
+
+    def get_profiles_by_university(self, course, university):
+        '''Return all user profiles that belong to a particular university.'''
+        return self.get_profiles_by_course(course=course).filter(university=university)
+
+    def get_profiles_by_major(self, course, major):
+        '''Return all user profiles that belong to a particular major.'''
+        return self.get_profiles_by_course(course=course).filter(major=major)
+
+    def get_profiles_by_state(self, course, state):
+        '''Return all user profiles that belong to a particular state.'''
+        return self.get_profiles_by_course(course=course).filter(state=state)
+
 class UserProfileManager(models.Manager):
     '''Model manager for the UserProfile class.'''
 
+    def get_queryset(self):
+        '''Get the queryset of Category.'''
+        return UserProfileQueryset(self.model, using=self._db)
+
+    def all(self):
+        '''Return all user profiles.'''
+        return self.get_queryset()
+
     def get_profiles_by_course(self, course):
-        '''Return all users that belong to a particular class.'''
-        return self.filter(course=course)
+        '''Return all user profiles that belong to a particular class.'''
+        return self.all().get_profiles_by_course(course=course)
+
+    def get_profiles_by_university(self, course, university):
+        '''Return all user profiles that belong to a particular university.'''
+        return self.all().get_profiles_by_university(course=course, university=university)
+
+    def get_profiles_by_major(self, course, major):
+        '''Return all user profiles that belong to a particular major.'''
+        return self.all().get_profiles_by_major(course=course, major=major)
+
+    def get_profiles_by_state(self, course, state):
+        '''Return all user profiles that belong to a particular state.'''
+        return self.all().get_profiles_by_state(course=course, state=state)
 
 class UserProfile(models.Model):
     '''Base model custom User class for authentication.'''
@@ -170,6 +210,10 @@ class UserProfile(models.Model):
         null=True,
         blank=True
     )
+    state = USStateField(
+        null=True,
+        blank=True
+    )
     completed = models.BooleanField(
         default=True
     )
@@ -186,7 +230,8 @@ class UserProfile(models.Model):
                course=None,
                motivational_image=None,
                university=None,
-               major=None
+               major=None,
+               state=None,
               ):
         '''Update the profile with any relevant information.'''
 
@@ -198,13 +243,14 @@ class UserProfile(models.Model):
             self.profile_image = profile_image
         if course:
             self.course = course
-            print course
         if motivational_image:
             self.motivational_image = motivational_image
         if university:
             self.university = university
         if major:
             self.major = major
+        if state:
+            self.state = state
         self.save()
 
     def get_full_name(self):

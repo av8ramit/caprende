@@ -34,6 +34,9 @@ class CategoryTests(TestCase):
         assert category.course == course
         assert category.section == coursesection
 
+        assert len(course.get_all_sections()) == 1
+        assert len(course.get_all_categories()) == 1
+
         #Test get_absolute_url
         resp = self.client.get(category.get_absolute_url())
         self.assertEqual(resp.status_code, 302)

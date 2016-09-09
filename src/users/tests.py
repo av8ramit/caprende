@@ -26,6 +26,11 @@ from allauth.account.auth_backends import AuthenticationBackend
 from allauth.utils import get_user_model, get_current_site
 from allauth.account.utils import user_pk_to_url_str
 
+from course.models import Course
+
+from .models import MyUser, UserProfile
+
+
 braintree.Configuration.configure(braintree.Environment.Sandbox,
                                   merchant_id=settings.BRAINTREE_MERCHANT_ID,
                                   public_key=settings.BRAINTREE_PUBLIC_KEY,
@@ -705,3 +710,59 @@ class UtilsTests(TestCase):
             email='john@doe.com',
             username='john')
         self.assertEquals(user_pk_to_url_str(user), str(user.pk))
+
+class UserProfileTests(TestCase):
+    '''Tests related to the actual UserProfile and Model manager functionality.'''
+
+    def setUp(self):
+        '''Set up the user infrastructure.'''
+
+        #User creation
+        self.user = MyUser.objects.create_test_user(
+            username="test",
+            email="test@yahoo.com",
+            password="password1!",
+        )
+
+        #User2 creation
+        self.user2 = MyUser.objects.create_test_user(
+            username="test2",
+            email="test2@yahoo.com",
+            password="password1!",
+        )
+
+        #User3 creation
+        self.user3 = MyUser.objects.create_test_user(
+            username="test3",
+            email="test3@yahoo.com",
+            password="password1!",
+        )
+
+        #Course Instantiation
+        self.course = Course(
+            name="testing course",
+            slug="testing-course"
+        )
+        self.course.save()
+
+    def test_user_profile_creation(self):
+        '''Test the user profile automatic creation.'''
+        assert len(UserProfile.objects.all()) == 3
+
+    def test_user_profile_querysets(self):
+        '''Test the user profile querysets.'''
+
+        self.user.profile.update(course=self.course)
+        self.user2.profile.update(course=self.course)
+        self.user3.profile.update(course=self.course)
+
+        self.user.profile.update(state="California")
+        self.user2.profile.update(state="California")
+        self.user3.profile.update(state="Nevada")
+
+        self.user.profile.update(major="Engineering")
+        self.user2.profile.update(major="Engineering")
+
+        assert len(UserProfile.objects.get_profiles_by_course(course=self.course)) == 3
+        assert len(UserProfile.objects.get_profiles_by_major(course=self.course, major="Engineering")) == 2
+        assert len(UserProfile.objects.get_profiles_by_state(course=self.course, state="California")) == 2
