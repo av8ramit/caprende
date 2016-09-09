@@ -15,9 +15,13 @@ These are the individual caprende modules that work together to create the websi
 #### <i class="icon-file"></i> caprende
 This is the main module that is created by default. This contains the url resolution file, the settings file, views file, and wsgi file.
 
-#### <i class="icon-file"></i> users
+#### <i class="icon-file"></i> analytics
 
-This contains the main MyUser and UserProfile class. The UserProfile class is a ForeignKey object of the MyUser class. The MyUser class overwrites django-allauth default user class. The UserProfile class contains all the personal information regarding the user. The MyUser class contains the email, password, and username.
+This is the analytics application that contains the Category and Subcategory data set classes. It also has the map reduce functions for peer analytics.
+
+#### <i class="icon-file"></i> billing
+
+This is the basic billing app. It stores all the braintree information, creates the basic plans, upgrades membership and allows users to upgrade and cancel the subscription.
 
 #### <i class="icon-file"></i> course
 
@@ -31,9 +35,17 @@ This contains the Category and SubCategory class that both connect to the Course
 
 Each Question object is assigned to a SubCategory. This application also contains the QuestionResponse object. For every Question in a Course that a user answers, a QuestionResponse object is created. Based on the set of a user's QuestionResponse objects we create an analysis report.
 
+#### <i class="icon-file"></i> users
+
+This contains the main MyUser and UserProfile class. The UserProfile class is a ForeignKey object of the MyUser class. The MyUser class overwrites django-allauth default user class. The UserProfile class contains all the personal information regarding the user. The MyUser class contains the email, password, and username.
+
 #### <i class="icon-file"></i> comments
 
 In this module we have a Comments object. Users can post comments on different Questions to help each other figure out the answer.
+
+#### <i class="icon-file"></i> notifications
+
+This is the basic notifications application. It allows comment notifications and admins to create notifications for different users based on new events.
 
 #### <i class="icon-file"></i> contact
 
