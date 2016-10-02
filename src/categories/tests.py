@@ -34,8 +34,8 @@ class CategoryTests(TestCase):
         assert category.course == course
         assert category.section == coursesection
 
-        assert len(course.get_all_sections()) == 1
         assert len(course.get_all_categories()) == 1
+        assert len(course.get_all_subcategories()) == 0
 
         #Test get_absolute_url
         resp = self.client.get(category.get_absolute_url())
@@ -75,7 +75,7 @@ class CategoryTests(TestCase):
 
         assert len(coursesection.category_set.all()) == 2
 
-        coursesection2 = CourseSection(name="Section 1", course=course2)
+        coursesection2 = CourseSection(name="Section 2", course=course2)
         coursesection2.save()
 
         category3 = Category(
@@ -122,6 +122,9 @@ class CategoryTests(TestCase):
         )
         subcategory.save()
 
+        assert len(course.get_all_categories()) == 1
+        assert len(course.get_all_subcategories()) == 1
+
         #Test get_absolute_url
         resp = self.client.get(subcategory.get_absolute_url())
         self.assertEqual(resp.status_code, 302)
@@ -166,7 +169,7 @@ class CategoryTests(TestCase):
         )
         course2.save()
 
-        coursesection2 = CourseSection(name="Section 1", course=course2)
+        coursesection2 = CourseSection(name="Section 2", course=course2)
         coursesection2.save()
 
         category2 = Category(

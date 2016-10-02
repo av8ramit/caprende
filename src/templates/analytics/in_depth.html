@@ -4,11 +4,60 @@
 
 {% block content %}
 
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main bluebox">
-	<br>
-	<h1 class="page-header">In Depth</h1>
-	<p>Sorry for the inconvenience. Our engineering team is still working on this feature. If you want a more comprehensive view of your performance return to this page in a few weeks.</p>
-	
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main indepth">
+    <br>
+
+    <h1 class="page-header"> {{ course.name }} - In Depth</h1>
+    <p>{{ course.description }}</p>
+    <hr>
+    {% for sect in course.get_all_sections %}
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                <a data-toggle="collapse" href="#collapse{{ sect.slug }}">{{ sect.name }}</a>
+                </h3>
+            </div>
+
+            <div id="collapse{{ sect.slug }}" class="panel-collapse collapse">
+                <p>{{ sect.description }}</p>
+                {% for cat in sect.get_all_categories %}
+
+                <div class="panel-group">
+                    <div class="panel inner-panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse{{ cat.slug }}">{{ cat.name }}</a>
+                            </h4>
+                        </div>
+                        <div id="collapse{{ cat.slug }}" class="panel-collapse collapse">
+                            <p>{{ cat.description }}</p>
+                            <div class="panel-group" id="accordion">
+                                <table class = 'table table-striped'>
+                                    <thead>
+                                        <tr>
+                                          <th>Subcategory</th>
+                                          <th>Category</th>
+                                          <th>Percentage</th>
+                                        </tr>
+                                    </thead>
+                                    {% for dataset in subcat_data %}
+                                        <tr>
+                                            <td>{{ dataset.subcategory.name }}</td>
+                                            <td>{{ dataset.subcategory.category.name }}</td>
+                                            <td>{{ dataset.percent }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock content %}

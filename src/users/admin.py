@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 
-from .models import MyUser, UserProfile
+from .models import MyUser, UserProfile, UserCategoryEnable
 from .forms import UserChangeForm, UserCreationForm
 
 class MyUserAdmin(UserAdmin):
@@ -38,5 +38,6 @@ class MyUserAdmin(UserAdmin):
 # Now register the new UserAdmin, MyUser, and UserProfile.
 admin.site.register(MyUser, MyUserAdmin)
 admin.site.register(UserProfile)
+admin.site.register(UserCategoryEnable)
 # Now unregister the Group model from admin.
 admin.site.unregister(Group)

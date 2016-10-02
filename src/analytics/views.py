@@ -1,6 +1,7 @@
 '''Views page for the analytics Caprende module.'''
 
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
 
 from .models import CategoryDataSet, SubCategoryDataSet
 
@@ -9,6 +10,11 @@ from .models import CategoryDataSet, SubCategoryDataSet
 # Create your views here.
 def dashboard(request):
     '''Returns the view of the dashboard.'''
+
+    if request.user.profile.course is None:
+        messages.error(request, "Please select a course prior to completing questions.")
+        return redirect("edit_profile")
+
     subcategory_datasets = SubCategoryDataSet.objects.sort_by_user(request.user)
     context = {
         "subcats" : subcategory_datasets[:4],
@@ -18,6 +24,10 @@ def dashboard(request):
 
 def peer_analytics(request):
     '''Returns the view of the peer analytics page.'''
+
+    if request.user.profile.course is None:
+        messages.error(request, "Please select a course prior to completing questions.")
+        return redirect("edit_profile")
 
     #Weakest category by state
     categories = request.user.profile.course.get_all_categories()
@@ -66,6 +76,7 @@ def peer_analytics(request):
     context = {
         "peer_analytics" : True,
         "weakest_category_by_university" : weakest_category_by_university,
+        "weakest_category_strength_by_university" : weakest_category_strength_by_university,
         "weakest_category_by_major" : weakest_category_by_major,
         "weakest_category_by_state" : weakest_category_by_state
     }
@@ -74,7 +85,17 @@ def peer_analytics(request):
 def in_depth(request):
     '''Returns the view of the in depth anaytics page regarding your performance among all the subcategories.'''
 
+    if request.user.profile.course is None:
+        messages.error(request, "Please select a course prior to completing questions.")
+        return redirect("edit_profile")
+
+    course = request.user.profile.course
+
+    subcat_dataset = SubCategoryDataSet.objects.sort_by_user(request.user)
+
     context = {
         "in_depth" : True,
+        "course" : course,
+        "subcat_data" : subcat_dataset
     }
     return render(request, "analytics/in_depth.html", context)

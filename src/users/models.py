@@ -14,6 +14,7 @@ from django.http import Http404
 
 from billing.models import UserMerchantId
 from course.models import Course
+from categories.models import Category
 
 from .utils import upload_location, UNIVERSITY_LIST, MAJOR_LIST
 
@@ -297,10 +298,67 @@ def new_profile_receiver(sender, instance, created, *args, **kwargs):
     else:
         instance.completed = True
 
+    if instance.course != None:
+        for cat in instance.course.get_all_categories():
+            UserCategoryEnable.objects.get_or_create(
+                category=cat,
+                profile=instance
+            )
+
+
 post_save.connect(new_user_receiver, sender=MyUser)
 post_save.connect(new_profile_receiver, sender=UserProfile)
 
 
+class UserCategoryEnableQuerySet(models.query.QuerySet):
+    '''UserCategoryEnable Query Set'''
+
+    def by_category(self, category):
+        '''Return the UserCategoryEnables associated with a category.'''
+        return self.filter(category=category)
+
+    def by_profile(self, profile):
+        '''Return the UserCategoryEnables associated with a user.'''
+        return self.filter(profile=profile)
+
+class UserCategoryEnableManager(models.Manager):
+    '''UserCategoryEnable Model Manager'''
+
+    def get_queryset(self):
+        '''Get the queryset of UserCategoryEnable.'''
+        return UserCategoryEnableQuerySet(self.model, using=self._db)
+
+    def all(self):
+        '''Return all the categoryenables.'''
+        return self.get_queryset()
+
+    def get_category_enable(self, category, profile):
+        '''Return the categoryenable associated with a category and profile.'''
+        s = self.all().by_category(category=category).by_profile(profile=profile)
+        assert len(s) == 1
+        return self.all().by_category(category=category).by_profile(profile=profile)[0]
+
+class UserCategoryEnable(models.Model):
+    '''Enable or disable a type of category questions.'''
+
+    category = models.ForeignKey(Category)
+    profile = models.ForeignKey(UserProfile)
+    enabled = models.BooleanField(default=True)
+
+    objects = UserCategoryEnableManager()
+
+    def enable(self):
+        '''Enable the category.'''
+        self.enabled = True
+        self.save()
+
+    def disable(self):
+        '''Disable the category.'''
+        self.enabled = False
+        self.save()
+
+    def __unicode__(self):
+        return self.profile.user.username + " | " + self.category.name + " | " + str(self.enabled)
 
 
 

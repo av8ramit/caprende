@@ -21,13 +21,13 @@
 
 {% block content %}
 <div class='row'>
-	<div class='col-sm-12' style='text-align:center;'>
+	<div class='col-sm-6 col-sm-offset-4' style='text-align:center;'>
 		<h1>Upgrade your account!</h1>
 		<p class='lead'>For $25/month get unlimited access</p>
 	</div>
 </div>
 <div class='row'>
-	<div class='col-sm-4 col-sm-offset-4'>
+	<div class='col-sm-6 col-sm-offset-4'>
 		<hr>
 		<form id='checkoutForm' method='POST' action=".">{% csrf_token %}
 			<div id='checkout' style='min-height: 250px;'></div>

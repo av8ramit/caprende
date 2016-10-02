@@ -69,7 +69,7 @@ class Category(models.Model):
         '''Return the URL to the category.'''
         return reverse("category_detail", kwargs={"slug": self.slug})
 
-    def get_all_sections(self):
+    def get_all_subcategories(self):
         '''Return all the subcategories by category.'''
         return self.subcategory_set.all()
 

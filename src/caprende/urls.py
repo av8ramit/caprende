@@ -47,6 +47,7 @@ urlpatterns += [
 #user model URLS
 urlpatterns += [
     url(r'^edit_profile/$', users_views.edit_profile, name='edit_profile'),
+    url(r'^category_filter/$', users_views.category_filter, name='category_filter'),
     url(r'^user_account/$', users_views.user_account, name='user_account'),
 ]
 
