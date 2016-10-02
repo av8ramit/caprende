@@ -10,10 +10,10 @@
     <div class="jumbotron">
         <div class="row">
                 <div class="col-sm-2">
-                    {% if question.get_prev_url %}
+                    {% if prev_url %}
                         <nav>
                           <ul class="pager">
-                            <li class="prev"><a href="{{ question.get_prev_url }}">Prev <span aria-hidden="true">&larr;</span></a></li>
+                            <li class="prev"><a href="{{ prev_url }}">Prev <span aria-hidden="true">&larr;</span></a></li>
                           </ul>
                         </nav>
                     {% endif %}
@@ -23,10 +23,10 @@
                     <header><h4>{{ correct }} / {{ total }} questions answered correctly</h1></header>
                 </div>
                 <div class="col-sm-2">
-                    {% if question.get_next_url %}
+                    {% if next_url %}
                         <nav>
                           <ul class="pager">
-                            <li class="next"><a href="{{ question.get_next_url }}">Skip <span aria-hidden="true">&rarr;</span></a></li>
+                            <li class="next"><a href="{{ next_url }}">Skip <span aria-hidden="true">&rarr;</span></a></li>
                           </ul>
                         </nav>
                     {% endif %}

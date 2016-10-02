@@ -11,7 +11,7 @@ from categories.models import Category, SubCategory
 from course.models import Course, CourseSection
 from users.models import MyUser
 
-from .utils import next_question, prev_question, upload_location
+from .utils import upload_location
 
 # Create your models here.
 
@@ -137,22 +137,6 @@ class Question(models.Model):
     def get_absolute_url(self):
         '''Return the URL to the question.'''
         return reverse("question_detail", kwargs={"course_slug" : self.course.slug, "question_index" : self.index})
-
-    def get_prev_url(self):
-        '''Return the URL to the previous question.'''
-        prev_q = prev_question(self)
-        if prev_q:
-            return prev_q.get_absolute_url()
-        else:
-            return None
-
-    def get_next_url(self):
-        '''Return the URL to the next question.'''
-        next_q = next_question(self)
-        if next_q:
-            return next_q.get_absolute_url()
-        else:
-            return None
 
     def category_string(self):
         '''Return the category string.'''

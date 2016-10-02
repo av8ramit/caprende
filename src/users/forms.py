@@ -53,4 +53,13 @@ class EditProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('first_name', 'last_name', 'profile_image', 'course', 'motivational_image', 'university', 'major', 'state')
 
+class UserCategoryEnableForm(forms.Form):
+    '''A form for a user to update the questions enabled.'''
+    choices = forms.MultipleChoiceField(choices=(), widget=forms.CheckboxSelectMultiple())
+
+    def __init__(self, *args, **kwargs):
+        categories = kwargs.pop('categories', None)
+        super(UserCategoryEnableForm, self).__init__(*args, **kwargs)
+        self.fields['choices'].choices = categories
+
 

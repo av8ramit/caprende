@@ -15,6 +15,7 @@
         <li {% if dashboard %} class="active" {% endif %}><a href="{% url 'dashboard' %}">Dashboard<span class="sr-only">(current)</span></a></li>
         <li {% if practice %} class="active" {% endif %}><a href="{% url 'next_question' %}">Practice Page</a></li>
         <li {% if peer_analytics %} class="active" {% endif %}><a href="{% url 'peer_analytics' %}">Peer Analytics</a></li>
+        <li {% if cat_filt %} class="active" {% endif %}><a href="{% url 'category_filter' %}">Question Filter</a></li>
         <li {% if in_depth %} class="active" {% endif %}><a href="{% url 'in_depth' %}">In Depth</a></li>
     </ul>
         <div class="profile">

@@ -3,7 +3,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 
 from analytics.models import CategoryDataSet, SubCategoryDataSet
 from comments.forms import CommentForm
@@ -11,12 +11,17 @@ from course.models import Course
 
 from .forms import QuestionResponseForm
 from .models import Question, QuestionResponse
+from .utils import next_question_url, prev_question_url
 
 # Create your views here.
 
 @login_required
 def user_question_detail(request):
     '''Return the view of the next question the user has to answer.'''
+
+    if request.user.profile.course is None:
+        messages.error(request, "Please select a course prior to completing questions.")
+        return redirect("edit_profile")
 
     return HttpResponseRedirect(reverse('question_detail', kwargs={
         'course_slug' : request.user.profile.course.slug,
@@ -37,6 +42,9 @@ def question_detail(request, course_slug, question_index):
     else:
         correct = category_data_set[0].correct
         total = correct + category_data_set[0].missed
+
+    prev_url = prev_question_url(question, request.user.profile)
+    next_url = next_question_url(question, request.user.profile)
 
     #If a response exists, redirect to the review page
     response = QuestionResponse.objects.get_queryset().get_response(user=request.user, question=question)
@@ -93,6 +101,8 @@ def question_detail(request, course_slug, question_index):
             "practice" : True,
             "correct" : correct,
             "total" : total,
+            "prev_url" : prev_url,
+            "next_url" : next_url,
         }
         return render(request, "questions/question_detail.html", context)
 
@@ -108,7 +118,9 @@ def question_review(request, course_slug, question_index, response):
     comments = question.comment_set.all()
     comment_form = CommentForm()
 
-    if question.get_next_url() is None:
+    prev_url = prev_question_url(question, request.user.profile)
+    next_url = next_question_url(question, request.user.profile)
+    if next_url is None:
         messages.info(request, "Congratulations, you've completed all the questions we offer. Check again soon for more.")
 
     for c in comments:
@@ -122,5 +134,7 @@ def question_review(request, course_slug, question_index, response):
         "comment_form": comment_form,
         "correct" : correct,
         "total" : total,
+        "prev_url" : prev_url,
+        "next_url" : next_url,
     }
     return render(request, "questions/question_review.html", context)

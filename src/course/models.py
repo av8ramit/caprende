@@ -136,6 +136,10 @@ class CourseSection(models.Model):
     name = models.CharField(
         max_length=120
     )
+    slug = models.SlugField(
+        default='default-slug',
+        unique=True,
+    )
     description = models.TextField(
         max_length=10000,
         default="",
@@ -152,3 +156,12 @@ class CourseSection(models.Model):
 
     def __unicode__(self):
         return self.course.name + " | " + self.name
+
+def set_course_section_slug_receiver(sender, instance, created, *args, **kwargs):
+    '''Receiver function for assigning a question the next index.'''
+
+    if created:
+        instance.slug = slugify(instance.name)
+        instance.save()
+
+post_save.connect(set_course_section_slug_receiver, sender=CourseSection)
