@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 
 {% block title %}Welcome | {% endblock %}
@@ -12,11 +13,11 @@
             <div class="row">
                 <div class="col-sm-7">
                     <h1>Caprende</h1><hr>
-                    <h3>Learn it simply.</h3>
-                    <p>Studying today isn't efficient, easy, or as beneficial as we'd like to think. With our methods of categorization, analysis, and targeted studying, you'll see improvements in less time and effort.</p>
+                    <h3>Simple interview prep.</h3>
+                    <p>Studying for a technical interview today isn't efficient, easy, or as beneficial as we'd like to think. With our methods of categorization, analysis, and targeted studying, you'll see improvements in less time and effort.</p>
                     <p>Caprende offers insight never before seen in traditional interview and prep studying. We analyze users with similar characteristics and use your performance to give you a comprehensive improvement plan.</p>
                     <p>
-                      <a class="btn btn-lg btn-primary" href="{% url 'account_signup' %}" role="button">Register &raquo;</a>
+                      <a class="btn btn-block btn-primary" href="{% url 'account_signup' %}" role="button">Register &raquo;</a>
                     </p>
                 </div>
                 <div class="col-sm-5 homelogin">
@@ -30,7 +31,6 @@
             </div>
         </div>
         <br>
-        <h1 class="sub-header">Courses</h1>
     </div>
 </div>
 
@@ -38,42 +38,27 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<div class="col-sm-10 col-sm-offset-1" style="text-align:center">
+<div class="col-sm-10 col-sm-offset-1 homepage">
     <!-- Three columns of text below the carousel -->
+    <h1>Courses Offered</h1>
     <div class="row">
-        <div class="col-sm-4">
-            <h2>Behavioral Interviews</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <div class="col-sm-6">
+            <h3>CS Technical Interview</h3>
+            <p>This course will cover the basic CS algorithm questions asked in interviews by most companies. We will target all areas of computer science and engineering. Topics will range from basic algorithms, embedded C, networking, basic puzzles, recursion, scripting, runtime calculation, and basic problem solving. This is a great generic refresher course for technical applicants.</p>
             <p><a class="btn btn-primary" href="{% url 'course_list' %}" role="button">View details &raquo;</a></p>
         </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
-            <h2>Technical Interviews</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <div class="col-sm-6">
+            <h3>Finance Technical Interview</h3>
+            <p>Although lots of non-finance and business majors tent to pursue careers in finances, technical questions are a big part of the interview. This course will cover the basics of accounting, finance, and business concepts. If you're pursing a career in banking, corporate finance, investment banking or other financial services field, this course will help you with technical finance questions.</p>
             <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
-            <h2>LSAT</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-sm-12">
+            <h3>Coming Soon</h3>
+            <p>Caprende has plans to expand to investment banking, general engineering, law, education, and generic interview courses as well. We also plan on expanding to post-graduate test courses such as the GRE, LSAT, and GMAT as well. <a href="{% url 'contact_us' %}">Contact us</a> with any suggestions you'd like to see on our website!</p>
         </div><!-- /.col-sm-4 -->
     </div>
-    <div class="row">
-        <div class="col-sm-4">
-            <h2>GRE</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
-            <h2>MCAT</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
-            <h2>GMAT</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-sm-4 -->
-    </div><!-- /.row -->
+    <br>
+
 </div>
 
 

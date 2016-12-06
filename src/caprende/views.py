@@ -9,7 +9,7 @@ def home(request):
     context = {
         "form" : LoginForm
     }
-    if request.user.is_authenticated():
+    if request.user.is_authenticated() or request.user.is_admin:
         return redirect("dashboard")
     else:
         return render(request, "home_visitor.html", context)
