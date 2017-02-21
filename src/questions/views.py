@@ -84,11 +84,11 @@ def question_detail(request, course_slug, question_index):
             if not response.correct:
                 cat_data_set.add_miss()
                 subcat_data_set.add_miss()
-                messages.error(request, question.answer_explanation)
+                messages.error(request, "You answered incorrectly. Please check the answer and explanation for help.")
             else:
                 cat_data_set.add_correct()
                 subcat_data_set.add_correct()
-                messages.success(request, question.answer_explanation)
+                messages.success(request, "Congratulations! You answered correctly.")
 
             return HttpResponseRedirect(reverse('question_review', kwargs={
                 'course_slug' : course.slug,

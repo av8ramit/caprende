@@ -98,7 +98,7 @@ def course_detail(request, slug):
                     Notification.objects.create(
                         text="We have added new questions to our %s course. Check them out!" % course.name,
                         recipient=user,
-                        link=Question.objects.get(index=user.profile.next_question_index).get_absolute_url()
+                        link=Question.objects.get(index=user.profile.next_question_index, course=course).get_absolute_url()
                     )
 
                 messages.success(request, "JSON file for questions was successfully uploaded. All %s users have been notified." % course)

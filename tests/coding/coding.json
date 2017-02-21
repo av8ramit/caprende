@@ -1,0 +1,51 @@
+{
+  "Technical" : {
+  		"Data Structures" : [
+  			"Arrays and Strings",
+  			"Linked Lists",
+  			"Stacks and Queues",
+  			"Trees and Graphs"
+  		],
+  		"Concepts and Algorithms" : [
+  			"Bit Manipulation",
+  			"Math and Logic Puzzles",
+  			"Object-Oriented Design",
+  			"Recursion and Dynamic Programming",
+  			"System Design and Scalability",
+  			"Sorting and Searching",
+        "Testing",
+        "Time and Space Complexity"
+  		],
+  		"Knowledge Based" : [
+  			"C and C++",
+  			"Java",
+  			"Databases",
+  			"Threads and Locks",
+  			"Arc Lengths and Areas for Sectors",
+  			"Perimeter, Area, and Volume",
+  			"Polygon Properties",
+  			"Midpoint and Distance Formula"
+  		],
+      "Advanced Algorithms" : [
+        "Topological Sort",
+        "Dijkstra's Algorithm",
+        "Hash Table Collision Resolution",
+        "Rabin-Karp Substring Search",
+        "AVL Trees",
+        "Red-Black Trees",
+        "Map-Reduce"
+      ]
+  },
+  "Behavioral" : {
+  		"Resume and Experience" : [
+  			"Technical Projects",
+  			"Previous Work Experience",
+  			"Abstract Questions"
+  		],
+  		"Personal Questions" : [
+  			"About Yourself",
+  			"Future Plans",
+  			"Ethical / Dilemma"
+  		]
+  }
+}

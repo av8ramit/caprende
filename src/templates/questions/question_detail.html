@@ -41,7 +41,7 @@
         {% endif %}
         {% if question.passage %}
             <div class="passage">
-                <p>{{ question.passage }}</p>
+                <p>{{ question.passage|safe }}</p>
             </div>
             <hr>
         {% endif %}

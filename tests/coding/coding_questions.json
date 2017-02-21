@@ -1,0 +1,118 @@
+{
+  "1" : {
+      "text" : "So, tell me a bit about yourself.",
+      "course" : "Coding",
+      "section" : "Behavioral",
+      "category" : "Personal Questions",
+      "subcategory" : "About Yourself",
+      "passage" : "This is usually the first question an interviewer will ask.",
+      "option_A" : "I feel confident with my answer.",
+      "option_B" : "I don't think my answer does my career and skillset justice.",
+      "option_C" : "",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "A",
+      "answer_explanation" : "Your answer should open with your current role and project. Move onto a brief educational summary. Discuss any relevant projects and tie them into the position you are applying for."
+  },
+
+  "2" : {
+      "text" : "Implement a program that returns true if all the characters in the string are unique.",
+      "course" : "Coding",
+      "section" : "Technical",
+      "category" : "Data Structures",
+      "subcategory" : "Arrays and Strings",
+      "passage" : "This question is designed to test your knowledge manipulating and gaining information from a string. A useful hint for a lot of these questions is to iterate through each character and store information in a hash table. If no extra memory is allowed, compensate with a slow running answer.",
+      "option_A" : "I feel confident with my answer.",
+      "option_B" : "I was unable to come up with an answer.",
+      "option_C" : "",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "A",
+      "answer_explanation" : "<!-- HTML generated using hilite.me --><div style='background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;'><pre style='margin: 0; line-height: 125%'><span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>isUniqueChars</span>(string):\n  <span style='color: #BA2121; font-style: italic'>&#39;&#39;&#39;</span>\n<span style='color: #BA2121; font-style: italic'>  \tinput str string</span>\n\n<span style='color: #BA2121; font-style: italic'>  \toutput bool</span>\n\n<span style='color: #BA2121; font-style: italic'>  \tThis function iterates through the string one character </span>\n<span style='color: #BA2121; font-style: italic'>  \tat a time in linear time and checks if the character is </span>\n<span style='color: #BA2121; font-style: italic'>  \tin the list of previously seen characters. This assumes</span>\n<span style='color: #BA2121; font-style: italic'>  \tthe in function runs in constant time. Another option </span>\n<span style='color: #BA2121; font-style: italic'>  \twould be to use a hash table or dictionary in Python.</span>\n<span style='color: #BA2121; font-style: italic'>  &#39;&#39;&#39;</span>\n\n  uchars <span style='color: #666666'>=</span> []\n  <span style='color: #008000; font-weight: bold'>for</span> c <span style='color: #AA22FF; font-weight: bold'>in</span> string:\n    <span style='color: #008000; font-weight: bold'>if</span> c <span style='color: #AA22FF; font-weight: bold'>in</span> uchars:\n      <span style='color: #008000; font-weight: bold'>return</span> <span style='color: #008000'>False</span>\n    <span style='color: #008000; font-weight: bold'>else</span>:\n      uchars<span style='color: #666666'>.</span>append(c)\n  <span style='color: #008000; font-weight: bold'>return</span> <span style='color: #008000'>True</span>\n</pre></div>\n\n"
+  },
+
+  "3" : {
+      "text" : "You have an integer and you can flip exactly one bit. Describe an algorithm to find the length of the longest sequence you can create.",
+      "course" : "Coding",
+      "section" : "Technical",
+      "category" : "Concepts and Algorithms",
+      "subcategory" : "Bit Manipulation",
+      "passage" : "This question is designed to test your knowledge of binary operators.",
+      "option_A" : "I feel confident with my answer.",
+      "option_B" : "I was unable to come up with an answer.",
+      "option_C" : "",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "A",
+      "answer_explanation" : "Convert the integer to a binary string using a bit shift and '&' operator. Iterate through the string and find the longest sum of two subsequences separated by a single number. The middle 0 will be the correct index. Also keep track of the largest subsequence of 1's and flip the first 0 afterwards. At the end of the iteration return the longest potential subsequence of 1's you could create."
+  },
+
+  "4" : {
+      "text" : "Design a bank account using object-oriented programming.",
+      "course" : "Coding",
+      "section" : "Technical",
+      "category" : "Concepts and Algorithms",
+      "subcategory" : "Object-Oriented Design",
+      "passage" : "This question is designed to test your knowledge of taking a basic concept and programming it using object-oriented principles. ",
+      "option_A" : "I feel confident with my answer.",
+      "option_B" : "I was unable to come up with an answer.",
+      "option_C" : "",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "A",
+      "answer_explanation" : "<!-- HTML generated using hilite.me --><div style='background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;'><pre style='margin: 0; line-height: 125%'><span style='color: #008000; font-weight: bold'>class</span> <span style='color: #0000FF; font-weight: bold'>BankAccount</span>:\n\t<span style='color: #BA2121; font-style: italic'>&#39;&#39;&#39;</span>\n<span style='color: #BA2121; font-style: italic'>  \tThis is a basic bank account class in Python. </span>\n<span style='color: #BA2121; font-style: italic'>  \tThe constructor requires a name and an initial </span>\n<span style='color: #BA2121; font-style: italic'>  \tbalance. It has three basic functions: withdraw, </span>\n<span style='color: #BA2121; font-style: italic'>  \tdeposit, and check_balance.</span>\n<span style='color: #BA2121; font-style: italic'>  &#39;&#39;&#39;</span>\n\n\t<span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>__init__</span>(<span style='color: #008000'>self</span>, name, balance):\n\t\t<span style='color: #008000'>self</span><span style='color: #666666'>.</span>name <span style='color: #666666'>=</span> name\n\t  <span style='color: #008000'>self</span><span style='color: #666666'>.</span>balance <span style='color: #666666'>=</span> balance\n\n\t<span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>withdraw</span>(<span style='color: #008000'>self</span>, amount):\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>balance <span style='color: #666666'>-=</span> amount\n    <span style='color: #008000; font-weight: bold'>return</span> <span style='color: #008000'>self</span><span style='color: #666666'>.</span>balance\n\n\t<span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>deposit</span>(<span style='color: #008000'>self</span>, amount):\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>balance <span style='color: #666666'>+=</span> amount\n    <span style='color: #008000; font-weight: bold'>return</span> <span style='color: #008000'>self</span><span style='color: #666666'>.</span>balance\n\n  <span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>check_balance</span>(<span style='color: #008000'>self</span>):\n  \t<span style='color: #008000; font-weight: bold'>return</span> <span style='color: #008000'>self</span><span style='color: #666666'>.</span>balance\n</pre></div>\n\n"
+  },
+
+  "5" : {
+      "text" : "In the Towers of Hanoi problem you have 3 towers and N disks which can slide onto any tower. The puzzle starts with the disks in ascending order of size. There are three rules. <br><b><br>1. Only one disk can be moved at a time. <br>2. A disk is slid from the top of one tower to another. <br>3. A disk cannot be placed on a smaller disk. </b><br><br>Write a program to move the disks from the first tower to the last.",
+      "course" : "Coding",
+      "section" : "Technical",
+      "category" : "Concepts and Algorithms",
+      "subcategory" : "Recursion and Dynamic Programming",
+      "passage" : "This question is designed to test your knowledge of tackling a problem by viewing it as multiple subproblems. ",
+      "option_A" : "I feel confident with my answer.",
+      "option_B" : "I was unable to come up with an answer.",
+      "option_C" : "",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "A",
+      "answer_explanation" : "<!-- HTML generated using hilite.me --><div style='background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;'><pre style='margin: 0; line-height: 125%'><span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>moveTower</span>(height,fromPole, toPole, withPole):\n    <span style='color: #BA2121; font-style: italic'>&#39;&#39;&#39;Recursion is the best way to solve this problem. A more</span>\n<span style='color: #BA2121; font-style: italic'>    detailed solution can be found at:</span>\n<span style='color: #BA2121; font-style: italic'>    http://interactivepython.org/runestone/static/pythonds/Recursion/TowerofHanoi.html&#39;&#39;&#39;</span>\n    <span style='color: #008000; font-weight: bold'>if</span> height <span style='color: #666666'>&gt;=</span> <span style='color: #666666'>1</span>:\n        moveTower(height<span style='color: #666666'>-1</span>,fromPole,withPole,toPole)\n        moveDisk(fromPole,toPole)\n        moveTower(height<span style='color: #666666'>-1</span>,withPole,toPole,fromPole)\n\n<span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>moveDisk</span>(fp,tp):\n    <span style='color: #008000; font-weight: bold'>print</span>(<span style='color: #BA2121'>&quot;moving disk from&quot;</span>,fp,<span style='color: #BA2121'>&quot;to&quot;</span>,tp)\n</pre></div>\n\n"
+  },
+
+  "6" : {
+      "text" : "How would you design the data structures for a more basic version of Amazon?",
+      "course" : "Coding",
+      "section" : "Technical",
+      "category" : "Concepts and Algorithms",
+      "subcategory" : "System Design and Scalability",
+      "passage" : "This question is designed to test your knowledge of fixing a problem in the real world and communicating it effectively.",
+      "option_A" : "I feel confident with my answer with multiple classes, methods, and a consistent design. ",
+      "option_B" : "I was able to come up with an answer in theory, but unable to express it.",
+      "option_C" : "I was unable to come up with an answer.",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "A",
+      "answer_explanation" : "<!-- HTML generated using hilite.me --><div style='background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;'><pre style='margin: 0; line-height: 125%'><span style='color: #BA2121; font-style: italic'>&#39;&#39;&#39;</span>\n<span style='color: #BA2121; font-style: italic'>The key to solving this problem is to be creative and design classes and methods</span>\n<span style='color: #BA2121; font-style: italic'>that are both efficient and easily adjustable. Make a comprehensive list of features</span>\n<span style='color: #BA2121; font-style: italic'>and schema you support and then start mapping the idea you have into the code. Never simply</span>\n<span style='color: #BA2121; font-style: italic'>start coding without a solid plan. Consider new features that can highlight your ability to</span>\n<span style='color: #BA2121; font-style: italic'>think outside the box. Have fun with this question.</span>\n<span style='color: #BA2121; font-style: italic'>&#39;&#39;&#39;</span>\n\n<span style='color: #008000; font-weight: bold'>class</span> <span style='color: #0000FF; font-weight: bold'>Account</span>:\n\t<span style='color: #BA2121; font-style: italic'>&#39;&#39;&#39;</span>\n<span style='color: #BA2121; font-style: italic'>  \tThis is a basic account class for the new version of Amazon.</span>\n<span style='color: #BA2121; font-style: italic'>  &#39;&#39;&#39;</span>\n\n\t<span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>__init__</span>(<span style='color: #008000'>self</span>, username, email):\n\t\t<span style='color: #008000'>self</span><span style='color: #666666'>.</span>username <span style='color: #666666'>=</span> name\n\t  <span style='color: #008000'>self</span><span style='color: #666666'>.</span>email <span style='color: #666666'>=</span> email\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>orders <span style='color: #666666'>=</span> []\n\n  <span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>add_order</span>(<span style='color: #008000'>self</span>, item):\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>orders<span style='color: #666666'>.</span>append(item)\n\n<span style='color: #008000; font-weight: bold'>class</span> <span style='color: #0000FF; font-weight: bold'>Order</span>:\n  <span style='color: #BA2121; font-style: italic'>&#39;&#39;&#39;</span>\n<span style='color: #BA2121; font-style: italic'>    This is a basic order that occurs on our site.</span>\n<span style='color: #BA2121; font-style: italic'>  &#39;&#39;&#39;</span>\n  <span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>__init__</span>(<span style='color: #008000'>self</span>, buyer, seller, item):\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>buyer <span style='color: #666666'>=</span> buyer\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>seller <span style='color: #666666'>=</span> seller\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>item <span style='color: #666666'>=</span> item\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>time <span style='color: #666666'>=</span> time<span style='color: #666666'>.</span>now()\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>refunded <span style='color: #666666'>=</span> <span style='color: #008000'>False</span>\n\n  <span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>refund_order</span>():\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>refunded <span style='color: #666666'>=</span> <span style='color: #008000'>True</span>\n    <span style='color: #408080; font-style: italic'>#Initiate payment return</span>\n\n<span style='color: #008000; font-weight: bold'>class</span> <span style='color: #0000FF; font-weight: bold'>Item</span>:\n  <span style='color: #BA2121; font-style: italic'>&#39;&#39;&#39;</span>\n<span style='color: #BA2121; font-style: italic'>    This is a basic item that is listed on our site.</span>\n<span style='color: #BA2121; font-style: italic'>  &#39;&#39;&#39;</span>\n  <span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>__init__</span>(<span style='color: #008000'>self</span>, name, price, description):\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>name <span style='color: #666666'>=</span> name\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>price <span style='color: #666666'>=</span> price\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>item <span style='color: #666666'>=</span> item\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>seller <span style='color: #666666'>=</span> seller\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>rating <span style='color: #666666'>=</span> <span style='color: #008000'>None</span>\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>ratings_given <span style='color: #666666'>=</span> <span style='color: #666666'>0</span>\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>reviews <span style='color: #666666'>=</span> []\n\n  <span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>add_rating</span>(rating):\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>rating <span style='color: #666666'>=</span> (<span style='color: #008000'>self</span><span style='color: #666666'>.</span>rating <span style='color: #666666'>+</span> rating) <span style='color: #666666'>/</span> (<span style='color: #008000'>self</span><span style='color: #666666'>.</span>ratings_given <span style='color: #666666'>+</span> <span style='color: #666666'>1</span>)\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>ratings_given <span style='color: #666666'>+=</span> <span style='color: #666666'>1</span>\n\n  <span style='color: #008000; font-weight: bold'>def</span> <span style='color: #0000FF'>add_review</span>(review):\n    <span style='color: #008000'>self</span><span style='color: #666666'>.</span>reviews <span style='color: #666666'>+=</span> review\n</pre></div>\n\n"
+  },
+
+  "7" : {
+      "text" : "If given a list of alphabetically sorted strings with randomly interleaved empty strings, write an algorithm to find the index of a particular word.",
+      "course" : "Coding",
+      "section" : "Technical",
+      "category" : "Concepts and Algorithms",
+      "subcategory" : "System Design and Scalability",
+      "passage" : "This question is designed to test your knowledge of fixing a problem in the real world and communicating it effectively.",
+      "option_A" : "I feel confident with my answer with multiple ",
+      "option_B" : "I was able to come up with an answer in theory, but unable to express it.",
+      "option_C" : "I was unable to come up with an answer.",
+      "option_D" : "",
+      "option_E" : "",
+      "answer_letter" : "A",
+      "answer_explanation" : ""
+  },
+
+
+}
+
+
+

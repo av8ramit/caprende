@@ -41,11 +41,17 @@
         {% endif %}
         {% if question.passage %}
             <div class="passage">
-                <p>{{ question.passage }}</p>
+                <p>{{ question.passage|safe }}</p>
             </div>
             <hr>
         {% endif %}
         <p>{{ question.question_text|safe }}</p>
+        {% if question.answer_explanation %}
+            <div class="passage">
+                <p>{{ question.answer_explanation|safe }}</p>
+            </div>
+            <hr>
+        {% endif %}
         {% for item, value, correct in question.choices %}
             {% if correct and value == response %}
                 <font color="green"><input type="radio" checked="checked" name="answer" value="{{ value }}"> {{ item|safe }}<br></font>
